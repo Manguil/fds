@@ -2,6 +2,7 @@ var express = require("express");
 var fs = require('fs');
 const { features } = require("process");
 var app = express();
+var nbBat = 0;
 
 
 let pis = {};
@@ -13,8 +14,10 @@ for (elem of PI["features"]){
 
 for (elem of PI["features"]){
     let amenity = elem["properties"]["amenity"];
+    nbBat ++;
     pis[amenity].push({nom:elem["properties"]["name"],long:elem["geometry"]["coordinates"][0],lat:elem["geometry"]["coordinates"][1]});
 }
+console.log("pis : ",pis);
 
 app.listen(8888);
 
@@ -30,7 +33,7 @@ app.get('/types', function(request, response) {
     let types = [];
     for (let type in pis) types.push(type);
     response.setHeader("Content-type", "application/json");    
-    response.end(JSON.stringify(types));
+    response.end(JSON.stringify([types,nbBat]));
 });
 
 // Renvoi des établissements d'un type donné
