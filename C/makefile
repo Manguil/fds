@@ -1,0 +1,1 @@
+tps: temps.o temps.c

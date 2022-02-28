@@ -1,0 +1,6 @@
+cocktails = [{'nom':'VM','amateurs':['Connery', 'Lazenby', 'Moore', 'Dalton', 'Brosnan', 'Craig']},
+ {'nom':'Vesper','amateurs':['Craig']},
+ {'nom':'Collins','amateurs':['Connery']},   
+ {'nom':'Mint J','amateurs':['Connery']},
+ {'nom':'The Mac', 'amateurs':['Craig']}
+];
