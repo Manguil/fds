@@ -4,7 +4,7 @@ $().ready(function () {
         listTypes = listTypes[0];
         console.log("liste de type de batiment : ",listTypes);
         console.log("nombre de batiment : ",nbBat);
-        let html = "<div id=points_interet>";
+        let html = "";
         let numero = 1;
         for (let type of listTypes) {
             console.log("type : ", type);
@@ -19,10 +19,9 @@ $().ready(function () {
 
                 html += "</div>";
                 if (numero == nbBat+1) {
-                    html += "</div>";
                     console.log("le code html est ", html);
                     $("#points_interet").append(html);
-                    $("#points_interet").accordion();
+                    $("#points_interet").accordion({collapsible: true, heightStyle: 'content'});
                 }
             });
         }
