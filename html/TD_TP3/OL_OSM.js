@@ -22,27 +22,27 @@ $().ready(function () {
                     console.log(html);
                     $("#points_interet").append(html);
                     $("#points_interet").accordion({ collapsible: true, heightStyle: 'content' });
+                    var map = new ol.Map({
+                        target: 'map',
+                        layers: [new ol.layer.Tile({ source: new ol.source.OSM() })],
+                        view: new ol.View({
+                            center: ol.proj.fromLonLat([3.876716, 43.61]),
+                            zoom: 14
+                        })
+                    });
+                    for (let i = 0 ; i < nbBat; i++) {
+                        console.log("commence");
+                        console.log(i);
+                        let image = $("#markerProto").clone();
+                        let marker = new ol.Overlay({
+                            position: ol.proj.fromLonLat([pi.long, pi.lat]),
+                            positioning: 'center-center',
+                            element: document.getElementById(image)
+                        }); // element fait r´ef´erence `a l’image
+                        map.addOverlay(marker);
+                    }
                 }
             });
         }
     });
 });
-
-var map = new ol.Map({
-    target: 'map',
-    layers: [new ol.layer.Tile({ source: new ol.source.OSM() })],
-    view: new ol.View({
-        center: ol.proj.fromLonLat([3.876716, 43.61]),
-        zoom: 14
-    })
-});
-for (i in nbBat) {
-    console.log(i);
-    let image = $("#markerProto").clone();
-    let marker = new ol.Overlay({
-        position: ol.proj.fromLonLat([pi.long, pi.lat]),
-        positioning: 'center-center',
-        element: document.getElementById(image)
-    }); // element fait r´ef´erence `a l’image
-    map.addOverlay(marker);
-}
