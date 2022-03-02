@@ -19,7 +19,7 @@ $().ready(function () {
 
                 html += "</div>";
                 if (numero == nbBat+1) {
-                    console.log("le code html est ", html);
+                    console.log(html);
                     $("#points_interet").append(html);
                     $("#points_interet").accordion({collapsible: true, heightStyle: 'content'});
                 }
