@@ -37,6 +37,7 @@ var map = new ol.Map({
     })
 });
 for (i in nbBat) {
+    console.log(i);
     let image = $("#markerProto").clone();
     let marker = new ol.Overlay({
         position: ol.proj.fromLonLat([pi.long, pi.lat]),
