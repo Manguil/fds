@@ -6,7 +6,7 @@ var nbBat = 0;
 
 
 let pis = {};
-let PI = JSON.parse(fs.readFileSync('OSM_Metropole_restauration_bar.json','utf8'));
+let PI = JSON.parse(fs.readFileSync('OSM_Metropole_restauration_bar_complet.json','utf8'));
 for (elem of PI["features"]){
     pis[elem["properties"]["amenity"]] = []
 }
