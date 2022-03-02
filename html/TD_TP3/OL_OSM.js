@@ -2,8 +2,8 @@ $().ready(function () {
     $.getJSON("http://localhost:8888/types", function (listTypes) {
         nbBat = listTypes[1];
         listTypes = listTypes[0];
-        console.log("liste de type de batiment : ",listTypes);
-        console.log("nombre de batiment : ",nbBat);
+        console.log("liste de type de batiment : ", listTypes);
+        console.log("nombre de batiment : ", nbBat);
         let html = "";
         let numero = 1;
         for (let type of listTypes) {
@@ -18,12 +18,21 @@ $().ready(function () {
                 }
 
                 html += "</div>";
-                if (numero == nbBat+1) {
+                if (numero == nbBat + 1) {
                     console.log(html);
                     $("#points_interet").append(html);
-                    $("#points_interet").accordion({collapsible: true, heightStyle: 'content'});
+                    $("#points_interet").accordion({ collapsible: true, heightStyle: 'content' });
                 }
             });
         }
     });
+});
+
+var map = new ol.Map({
+    target: 'map',
+    layers: [new ol.layer.Tile({ source: new ol.source.OSM() })],
+    view: new ol.View({
+        center: ol.proj.fromLonLat([3.876716, 43.61]),
+        zoom: 14
+    })
 });
