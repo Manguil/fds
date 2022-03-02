@@ -36,3 +36,12 @@ var map = new ol.Map({
         zoom: 14
     })
 });
+for (i in nbBat) {
+    let image = $("#markerProto").clone();
+    let marker = new ol.Overlay({
+        position: ol.proj.fromLonLat([pi.long, pi.lat]),
+        positioning: 'center-center',
+        element: document.getElementById(image)
+    }); // element fait r´ef´erence `a l’image
+    map.addOverlay(marker);
+}
