@@ -22,7 +22,7 @@ $().ready(function () {
                     html += "</div>";
                     console.log("le code html est ", html);
                     $("#points_interet").append(html);
-                    $('#points_interet').accordion({collapsible: true, heightStyle: 'content'});
+                    $('#points_interet').accordion({heightStyle: "content",autoHeight: false,clearStyle: true, });
                 }
             });
         }
