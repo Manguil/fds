@@ -316,7 +316,6 @@ void compteJours(int anneeCourante, int jour, int mois, int annee)
             if (bissextile(anneeCourante + i))
                 nbJour++;
         }
-        printf("%d\n", nbJour);
         nbJour += 365 * diffAnnee;
         for (int i = mois - 1; i > 0; i--)
         {
@@ -330,6 +329,10 @@ void compteJours(int anneeCourante, int jour, int mois, int annee)
     }
 }
 
+int compteNombresAnneesBissextiles(int nbAnnee){
+    printf("%d",nbAnnee/4 - nbAnnee/100 + nbAnnee/400 + 2);
+}
+
 void exo3_3()
 {
     time_t s;
@@ -341,7 +344,7 @@ void exo3_3()
     int annee = 0;
     int mois = 0;
     printf("rentre une date :\n");
-    scanf("%d/%d/%d\n", &jour, &mois, &annee);
+    scanf("%d/%d/%d", &jour, &mois, &annee);
     if (dateValide(jour, mois, annee))
         compteJours(anneeCourante, jour, mois, annee);
 }
