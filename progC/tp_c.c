@@ -301,7 +301,7 @@ void exo3_3(){
 }
 
 
-/*
+
 int exo4_1(){
     int val = 0;
     while (1){
@@ -331,7 +331,7 @@ int exo4_1(){
         }
     }
     return 0;
-}*/
+}
 
 
 #include "temps.h"
@@ -381,10 +381,9 @@ int main(){
         case 33:
             exo3_3();
             break;
-            /*
         case 41:
             exo4_1();
-            break;*/
+            break;
         case 42:
             exo4_2();
             break;
