@@ -31,7 +31,6 @@ $().ready(function () {
                         })
                     });
                     for (let i = 0 ; i < nbBat; i++) {
-                        console.log("commence");
                         console.log(i);
                         let image = $("#markerProto").clone();
                         let marker = new ol.Overlay({
