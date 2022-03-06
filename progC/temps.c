@@ -3,7 +3,14 @@
 #include "temps.h"
 
 void afficherTemps(tps *t){
-    printf("%2d : %2d : %.3f \n", (*t).h, (*t).m, (*t).s);
+    printf("%2d:%2d:%.3f \n", (*t).h, (*t).m, (*t).s);
+}
+
+void verifTemps(tps *t){
+	if ((t->s>=60)||(t->m>=60)||(t->h>=24)){
+		float s = tempsEnSeconde(t);
+		secondeEnTemps(s,t);
+	}
 }
 
 void modifierTemps(tps *t){
