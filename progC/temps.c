@@ -3,7 +3,7 @@
 #include "temps.h"
 
 void afficherTemps(tps *t){
-    printf("%d : %d : %.3f \n", (*t).h, (*t).m, (*t).s);
+    printf("%2d : %2d : %.3f \n", (*t).h, (*t).m, (*t).s);
 }
 
 void modifierTemps(tps *t){
@@ -16,12 +16,11 @@ float tempsEnSeconde(tps *t){
     return s;
 }
 
-tps secondeEnTemps(float s, tps *t){
+void secondeEnTemps(float s, tps *t){
 	long sInt = s*1000;
     (*t).h = (sInt-(sInt%(3600*1000)))/(3600*1000);
 	(*t).m = ((sInt-((*t).h)*3600*1000)-(sInt%(60*1000)))/(60*1000);
 	(*t).s = ((float)(sInt%(60*1000)))/1000;
-	return *t;
 }
 
 float duree(tps *debut, tps *fin){

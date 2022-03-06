@@ -387,16 +387,43 @@ int exo4_1()
 
 void exo4_2()
 {
-    float s = 0;
-    float sDuree = 0;
-    tps t1 = {1, 1, 53.175};
-    tps t2 = {2, 1, 53.175};
-    s = tempsEnSeconde(&t1);
-    t1 = secondeEnTemps(s,&t1);
-    afficherTemps(&t1);
-    sDuree = duree(&t1,&t2);
-    printf("%.3f seconde(s)",sDuree);
-
+    int choix = 1;
+    printf("choisi [1-5] :\n");
+    scanf("\t%d",&choix);
+    switch (choix)
+    {
+    case 2:
+        tps t = {0,0,0};
+        printf("rentre un temps (format:hh:mm:ss.dcm)\n");
+        scanf("%2d:%2d,%2.3f",t.h,t.m,t.s);
+        float s = 0;
+        s = tempsEnSeconde(&t);
+        printf("%2.3f seconde(s)",s);
+        break;
+    case 3:
+        float s = 0;
+        printf("rentre un nb de secondes(ss.dcm)\n");
+        scanf("%2.3f",&s);
+        tps t = {0,0,0};
+        secondeEnTemps(s,&t);
+        afficherTemps(&t);
+        break;
+    case 4:
+        tps t1 = {0,0,0};
+        tps t2 = {0,0,0};
+        printf("rentre deux temps (format:hh:mm:ss.dcm|hh:mm:ss.dcm)\n");
+        scanf("%2d:%2d:%2.3f|%2d:%2d:%2.3f",t1.h,t1.m,t1.s,t2.h,t2.m,t2.s);
+        float sDuree = 0;
+        sDuree = duree(&t1,&t2);
+        printf("il y a %2.3f s de difference",sDuree);
+        break;
+    case 5:
+        //code//
+        break;
+    default:
+        afficherTemps(&t1);
+        break;
+    }
 }
 
 int main()
