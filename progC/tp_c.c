@@ -388,10 +388,15 @@ int exo4_1()
 void exo4_2()
 {
     float s = 0;
+    float sDuree = 0;
     tps t1 = {1, 1, 53.175};
+    tps t2 = {2, 1, 53.175};
     s = tempsEnSeconde(&t1);
     t1 = secondeEnTemps(s,&t1);
     afficherTemps(&t1);
+    sDuree = duree(&t1,&t2);
+    printf("%.3f seconde(s)",sDuree);
+
 }
 
 int main()

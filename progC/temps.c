@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include "temps.h"
 
 void afficherTemps(tps *t){
@@ -20,6 +21,12 @@ tps secondeEnTemps(float s, tps *t){
     (*t).h = (sInt-(sInt%(3600*1000)))/(3600*1000);
 	(*t).m = ((sInt-((*t).h)*3600*1000)-(sInt%(60*1000)))/(60*1000);
 	(*t).s = ((float)(sInt%(60*1000)))/1000;
-	
 	return *t;
+}
+
+float duree(tps *debut, tps *fin){
+	float sDebut = tempsEnSeconde(debut);
+	float sFin = tempsEnSeconde(fin);
+	float sDuree = fabs(sDebut-sFin);
+	return sDuree;
 }
