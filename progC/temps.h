@@ -4,5 +4,7 @@ struct temps {
 
 typedef struct temps tps;
 
+void afficherTemps(tps *t);
 void modifierTemps(tps *t);
-void tempToSeconde(tps *t);
+long tempsEnSeconde(tps *t);
+void secondeEnTemps(long s, tps *t);

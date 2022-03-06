@@ -329,7 +329,7 @@ void compteJours(int anneeCourante, int jour, int mois, int annee)
     }
 }
 
-int compteNombresAnneesBissextiles(int nbAnnee){
+void compteNombresAnneesBissextiles(int nbAnnee){
     printf("%d",nbAnnee/4 - nbAnnee/100 + nbAnnee/400 + 2);
 }
 
@@ -388,8 +388,8 @@ int exo4_1()
 void exo4_2()
 {
     tps t1 = {1, 1, 53.175};
-    tempToSeconde(&t1);
-    printf("%d : %d : %f \n", t1.h, t1.m, t1.s);
+    
+    secondeEnTemps(tempsEnSeconde(&t1),&t1);
 }
 
 int main()
