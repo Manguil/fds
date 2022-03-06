@@ -386,11 +386,6 @@ int exo4_1()
 
 #include "temps.h"
 
-void v1(arg1,arg2)
-{
-	//
-}
-
 void exo4_2()
 {
 	int choix = 1;
@@ -433,7 +428,38 @@ void exo4_2()
 		break;
 	}
 	case 5:
-	{	
+	{
+		int choix = 0;
+		tps tempsDepart = {0, 0, 0}, tempsMax = {0, 0, 0}, tempsMin = {0, 0, 0}, duree = {0,0,0};
+		float coeff = 1;
+		printf("quelle est l'heure de depart (format: hh:mm:ss.dcm)\n");
+		scanf("\t%2d:%2d:%6f", &tempsDepart.h, &tempsDepart.m, &tempsDepart.s);
+		printf("quelle est la duree : \n");
+		scanf("\t%2d:%2d:%6f", &duree.h, &duree.m, &duree.s);
+		printf("quelle est le coeff : \n");
+		scanf("%f", &coeff);
+		printf("quelle version veux-tu : \n");
+		scanf("%d", &choix);
+		switch (choix)
+		{
+		case 2:
+		{
+			
+			break;
+		}
+		case 3:
+		{
+
+			break;
+		}
+		default:
+		{
+			heureArriveeV1(&tempsDepart, &duree, coeff, &tempsMax, &tempsMin);
+			break;
+		}
+		}
+		afficherTemps(&tempsMin);
+		afficherTemps(&tempsMax);
 		break;
 	}
 	default:
