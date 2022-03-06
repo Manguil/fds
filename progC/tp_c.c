@@ -421,7 +421,10 @@ void exo4_2()
         //code//
         break;
     default:
-        afficherTemps(&t1);
+        tps t = {0,0,0};
+        printf("rentre un temps (format:hh:mm:ss.dcm)\n");
+        scanf("%2d:%2d,%2.3f",t.h,t.m,t.s);
+        afficherTemps(&t);
         break;
     }
 }
