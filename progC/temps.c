@@ -52,4 +52,5 @@ void heureArriveeV1(tps *tempsDepart, tps *duree, float coeff, tps *tempsMax, tp
 	sDuree = tempsEnSeconde(duree);
 	secondeEnTemps(sDepart + sDuree, tempsMin);
 	secondeEnTemps(sDepart + (sDuree * coeff), tempsMax);
+	verifTemps(tempsMax);verifTemps(tempsMin);
 }
