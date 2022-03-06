@@ -2,22 +2,24 @@
 #include "temps.h"
 
 void afficherTemps(tps *t){
-    printf("%d : %d : %f \n", (*t).h, (*t).m, (*t).s);
+    printf("%d : %d : %.3f \n", (*t).h, (*t).m, (*t).s);
 }
 
 void modifierTemps(tps *t){
     (*t).h += 1;
 }
 
-long tempsEnSeconde(tps *t){
-    long s = (*t).h*3600+(*t).m*60+(*t).s;
+float tempsEnSeconde(tps *t){
+    float s = (*t).h*3600+(*t).m*60+(*t).s;
+	printf("%.3f\n",s);
     return s;
 }
 
-void secondeEnTemps(long s, tps *t){
-    (*t).h = (s-(s%3600)/3600);
-	(*t).m = (s-(s%60)/60);
-	(*t).s = s%60;
-
-	afficherTemps(&t);
+tps secondeEnTemps(float s, tps *t){
+	long sInt = s*1000;
+    (*t).h = (sInt-(sInt%(3600*1000)))/(3600*1000);
+	(*t).m = ((sInt-((*t).h)*3600*1000)-(sInt%(60*1000)))/(60*1000);
+	(*t).s = ((float)(sInt%(60*1000)))/1000;
+	
+	return *t;
 }
