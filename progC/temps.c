@@ -4,7 +4,7 @@
 
 void afficherTemps(tps *t)
 {
-	printf("%2d:%2d:%2.3f \n", (*t).h, (*t).m, (*t).s);
+	printf("%02d:%02d:%02.3f \n", (*t).h, (*t).m, (*t).s);
 }
 
 void verifTemps(tps *t)
