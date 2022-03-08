@@ -466,7 +466,7 @@ void exo4_2()
 	{
 		tps t = {0, 0, 0};
 		printf("rentre un temps (format: hh:mm:ss.dcm)\n");
-		scanf("%2d:%2d,%6f", &t.h, &t.m, &t.s);
+		scanf("%2d:%2d:%6f", &t.h, &t.m, &t.s);
 		verifTemps(&t);
 		afficherTemps(&t);
 		break;
