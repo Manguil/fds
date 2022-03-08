@@ -9,7 +9,7 @@ void afficherTemps(tps *t)
 
 void verifTemps(tps *t)
 {
-	if ((t->s >= 60) || (t->m >= 60) || (t->h >= 24))
+	if ((t->s >= 60) || (t->m >= 60))
 	{
 		float s = tempsEnSeconde(t);
 		secondeEnTemps(s, t);

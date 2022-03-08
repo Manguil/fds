@@ -430,7 +430,7 @@ void exo4_2()
 	case 5:
 	{
 		int choix = 0;
-		tps tempsDepart = {0, 0, 0}, tempsMax = {0, 0, 0}, tempsMin = {0, 0, 0}, duree = {0,0,0};
+		tps tempsDepart = {0, 0, 0}, tempsMax = {0, 0, 0}, tempsMin = {0, 0, 0}, duree = {0, 0, 0};
 		float coeff = 1;
 		printf("quelle est l'heure de depart (format: hh:mm:ss.dcm)\n");
 		scanf("\t%2d:%2d:%6f", &tempsDepart.h, &tempsDepart.m, &tempsDepart.s);
@@ -444,7 +444,7 @@ void exo4_2()
 		{
 		case 2:
 		{
-			
+
 			break;
 		}
 		case 3:
