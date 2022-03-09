@@ -1,26 +1,19 @@
-#tps: temps.o temps.c
-#pour compiler avec le module temps
+#pour compiler avec le module parfait
 
-tp_c : tp_c.o temps.o
-	gcc tp_c.o temps.o -o tp_c
+tp_c : tp_c.o parfait.o temps.o
+	gcc linux/tp_c.o linux/parfait.o linux/temps.o -o tp_c -lm
 
-tp_c.o : tp_c.c temps.h
-	gcc -Wall -c tp_c.c
+tp_c.o : tp_c.c parfait.h temps.h
+	gcc -Wall -c tp_c.c linux/tp_c.o
 
-temps.o : temps.c temps.h
-	gcc -Wall -c temps.c
+parfait.o : parfait.c parfait.h
+	gcc -Wall -c parfait.c linux/parfait.o
 
 #-----------------------------------#
 #pour compiler avec le module temps
 
-tp_c : tp_c.o temps.o
-	gcc tp_c.o temps.o -o tp_c
-
-tp_c.o : tp_c.c temps.h
-	gcc -Wall -c tp_c.c
-
 temps.o : temps.c temps.h
-	gcc -Wall -c temps.c
+	gcc -Wall -c temps.c linux/temps.o
 
 .PHONY: clean
 
