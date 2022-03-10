@@ -4,6 +4,8 @@ typedef struct coupleEntier
     int Entier2;
 }cEntier;
 
+int saisiEntier();
+
 int addition(int entier1, int entier2);
 
 void multiplication(int entierl, int entier2, int *entier3);

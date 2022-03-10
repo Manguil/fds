@@ -1,8 +1,3 @@
-.PHONY: clean
-
-clean:
-	rm *.o
-
 tp_c : tp_c.o parfait.o temps.o
 	gcc tp_c.o parfait.o temps.o -o tp_c -lm
 	clean
@@ -19,3 +14,8 @@ parfait.o : parfait.c parfait.h
 
 temps.o : temps.c temps.h
 	gcc -Wall -c temps.c
+
+.PHONY: clean
+
+clean:
+	rm -f *.o

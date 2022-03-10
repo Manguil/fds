@@ -20,16 +20,14 @@ int saisieEntier(){
 }
 
 int addition(int entier1, int entier2){
-
+	return entier1 + entier2;
 }
 
-void multiplication(int entierl, int entier2, int *entier3);
+void multiplication(int entierl, int entier2, int *entier3){
+	*entier3 = entier2 * entierl;
+}
 
-int monMax(cEntier unCoupleEntiers);
-
-int main(){
-	int nb = -1;
-	nb = saisieEntier();
-	printf("Entier ; %d\n",nb);
-	return 0;
+int monMax(cEntier unCoupleEntiers){
+	if (unCoupleEntiers.Entier1 >= unCoupleEntiers.Entier2) {return unCoupleEntiers.Entier1;}
+	return unCoupleEntiers.Entier2;
 }
