@@ -1,5 +1,6 @@
 #include "calcul.h"
 #include <stdio.h>
+COUCOU
 
 void viderBuffer(void)
 {
