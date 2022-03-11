@@ -1,9 +1,10 @@
+#include "fibo3.h"
 #include <stdio.h>
-#include <stdbool.h>
 
 typedef struct _Premierstermes{
     int terme1;
     int terme2;
+    int k=2;
 } Ptermes;
 
 int fibonacci(int n){
@@ -21,13 +22,4 @@ int fibonacci(int n){
     printf("%d\n",u);
     return u;
     }   
-}
-
-int main(){
-    int n;
-    //Ptermes fibo={0,1};
-    printf("Saisir un entier positif :");
-    scanf("%d,",&n);
-    fibonacci(n);
-    return 0;
 }
