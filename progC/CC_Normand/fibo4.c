@@ -5,7 +5,9 @@ void maodifieK(suite *uFib, int nk){
     (*uFib).k = nk;
 }
 
-int kNacci(int n){}
+int kNacci(int n){
+    
+}
 
 int fibonacci(int n,suite *uFib){
     int som = 0;
