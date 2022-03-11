@@ -11,7 +11,8 @@ int main(){
 		case 1:{
 			nb = saisieEntier(); nb1 = saisieEntier();
 			printf("somme = %d\n", addition(nb,nb1));
-			break;}
+			break;
+			}
 		
 		case 2:{
 			nb = saisieEntier(); nb1 = saisieEntier();
@@ -23,7 +24,7 @@ int main(){
 		case 3 :{
 			/*nb = saisieEntier(); nb1 = saisieEntier();
 			cEntier couple = {nb,nb1}; */
-			//cEntier couple = {0,0};
+			cEntier couple = {0,0};
             printf("donne un couple N*N (format: (a,b))");
 			scanf("(%d,%d)",&couple.Entier1,&couple.Entier2);
 			printf("max = %d\n", monMax(couple));
