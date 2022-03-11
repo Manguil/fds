@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "calcul.h"
-COUCOU
 
 int main(){
 	int nb = -1;
