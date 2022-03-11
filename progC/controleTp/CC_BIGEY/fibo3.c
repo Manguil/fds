@@ -8,7 +8,7 @@ typedef struct _Premierstermes{
 } Ptermes;
 
 int fibonacci(int n){
-    int u0=Ptermes.terme1,u1=Ptermes.terme2,u=0;
+    int u0=Ptermes.terme1,u1=Ptermes.terme2,u=0,k=Ptermes.k;
     if (n==0 || n==1){
         printf("%d\n",n);
         return n;
