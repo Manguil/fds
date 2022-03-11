@@ -5,4 +5,8 @@ typedef struct suite {
 }suite;
 
 
-int fibonacci(int n,suite *uFib);
+int saisieEntier();
+
+void viderBuffer();
+
+int fibonacci(int n);

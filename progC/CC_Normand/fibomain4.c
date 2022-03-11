@@ -4,8 +4,7 @@
 int main(){
     suite uFib = {0,1,2};
     int fib = 0;
-    printf("Rentre un entier positif :\n");
-    scanf("%d",&fib);
-    printf("le %d terme est %d\n",fib ,fibonacci(fib,&uFib));
+    fib = saisieEntier();
+    printf("le %d terme est %d\n",fib ,fibonacci(fib));
     return 0;
 }

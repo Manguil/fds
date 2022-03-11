@@ -4,8 +4,12 @@ typedef struct suite {
     int k;
 }suite;
 
+int saisieEntier();
+
+void viderBuffer();
+
 void maodifieK(suite *uFib, int nk);
 
 int kNacci(int n);
 
-int fibonacci(int n,suite *uFib);
+int fibonacci(int n);

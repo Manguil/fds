@@ -5,6 +5,8 @@ typedef struct suite {
     int u1;
 }suite;
 
+suite uFib ={0,1};
+
 void viderBuffer(void)
 {
   int c;
@@ -23,8 +25,8 @@ int saisieEntier(){
 	else {return saisie;}
 }
 
-int fibonacci(int n,suite *uFib/*je ne sais plus pour le global*/){
-    if (n == (*uFib).u0 || n == (*uFib).u1) {return n;}
+int fibonacci(int n){
+    if (n == uFib.u0 || n == uFib.u1) {return n;}
     return fibonacci(n-1,uFib)+fibonacci(n-2,uFib);
 }
 
@@ -32,6 +34,6 @@ int main(){
     suite uFib = {0,1};
     int fib = 0;
     fib = saisieEntier();
-    printf("le %d terme est %d\n", fib, fibonacci(fib, &uFib));
+    printf("le %d terme est %d\n", fib, fibonacci(fib));
     return 0;
 }
