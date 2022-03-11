@@ -16,7 +16,7 @@ int saisieEntier(){
 		printf("la saisie n'est pas correcte\n");
 		saisieEntier();
 	}
-	else {return saisie;}
+	return saisie;
 }
 
 int addition(int entier1, int entier2){

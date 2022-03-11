@@ -1,13 +1,13 @@
 main : main.o calcul.o
-	gcc build/main.o build/calcul.o -o main
+	gcc main.o calcul.o -o build/main
 
 main.o : main.c calcul.h
-	gcc -Wall -c main.c /build
+	gcc -Wall -c main.c
 
 calcul.o : calcul.c calcul.h
-	gcc -Wall -c calcul.c /build
+	gcc -Wall -c calcul.c
 
 .PHONY: clean
 
 clean:
-	rm -f buil/*.o
+	rm -f build/*.o
