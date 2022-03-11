@@ -91,4 +91,3 @@ int addition(int entier1, int entier2);
 void multiplication(int entierl, int entier2, int *entier3);
 
 int monMax(cEntier unCoupleEntiers);
->>>>>>> 4c22a23047b30e2c97321c9a963692f6f4bbe5db
