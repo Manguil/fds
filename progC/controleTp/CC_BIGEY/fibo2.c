@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+typedef struct _Premierstermes{
+    int terme1;
+    int terme2;
+} Ptermes;
+
 int fibonacci(int n){
     int u0=0,u1=1,u=0;
     if (n==0 || n==1){
