@@ -1,6 +1,5 @@
 #include "calcul.h"
 #include <stdio.h>
-COUCOU
 
 void viderBuffer(void)
 {
@@ -32,5 +31,3 @@ int monMax(cEntier unCoupleEntiers){
 	if (unCoupleEntiers.Entier1 >= unCoupleEntiers.Entier2) {return unCoupleEntiers.Entier1;}
 	return unCoupleEntiers.Entier2;
 }
-
-COUCOU
