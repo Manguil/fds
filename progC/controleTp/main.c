@@ -25,8 +25,8 @@ int main(){
 			cEntier couple = {nb,nb1}; */
 			//cEntier couple = {0,0};
             printf("donne un couple N*N (format: (a,b))");
-			//scanf("(%d,%d)",&couple.Entier1,&couple.Entier2);
-			//printf("max = %d\n", monMax(couple));
+			scanf("(%d,%d)",&couple.Entier1,&couple.Entier2);
+			printf("max = %d\n", monMax(couple));
 			break;
 		}
 		default:{
