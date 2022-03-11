@@ -8,10 +8,10 @@ int main(){
 	printf("choisi un nombre :\n");
 	scanf("%d",&choix);
 	switch (choix){
-		case 1: 
+		case 1:{
 			nb = saisieEntier(); nb1 = saisieEntier();
 			printf("somme = %d\n", addition(nb,nb1));
-			break;
+			break;}
 		
 		case 2:{
 			nb = saisieEntier(); nb1 = saisieEntier();

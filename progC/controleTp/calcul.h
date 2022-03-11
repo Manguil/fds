@@ -4,7 +4,7 @@ typedef struct coupleEntier
     int Entier2;
 }cEntier;
 
-int saisiEntier();
+int saisieEntier();
 
 int addition(int entier1, int entier2);
 
