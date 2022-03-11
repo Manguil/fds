@@ -17,10 +17,9 @@
             echo $e->getMessage();
             die("Connexion impossible !");
         }
-        $sql = 'SELECT nom FROM utilisateur u, etudiant e WHERE
-            u.id=e.id ORDER BY nom';
+        $sql = 'SELECT * FROM etudiant, stagea';
         foreach($dbh->query($sql) as $row) {
-            print($row['nom'] . "\t" . $row['ue'] . "<br />");
+            print($row['nom'] . "\t" . $row['sujet'] . "<br/>");
         }
     ?>
 </body>
