@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "temps.h": "c"
-    }
+    },
+    "python.linting.enabled": true
 }
