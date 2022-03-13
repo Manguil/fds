@@ -1,4 +1,4 @@
-from pylab import *
+from pylab import legend,show,array,plot
 from math import floor
 from random import randint
 

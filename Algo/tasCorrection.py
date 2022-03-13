@@ -1,8 +1,8 @@
-from random import *
-from math import *
-from pylab import *
-from random import *
 import time
+from math import *
+from random import *
+
+from pylab import legend,show,plot,array
 
 NB=0
 
