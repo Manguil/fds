@@ -81,5 +81,4 @@ def afficher(T):
 
 arbre = ABR(Sommet(8))
 arbre.genArbre(10)
-
 afficher(arbre)
