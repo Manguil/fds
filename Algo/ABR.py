@@ -30,9 +30,9 @@ class ABR:
                 y.droit = z
 
     def genArbre(self, n=0):
-        l = list(range(0, n))
+        l = list(range(n))
         shuffle(l)
-        for i in range(n - 1):
+        for i in range(n):
             self.inserer(Sommet(l[i]))
 
     def parcoursInfixe(self, x):
@@ -44,6 +44,10 @@ class ABR:
     def recherche(self, x, c):
         if x == None or x.clef == c:
             return x
+        if c < x.clef:
+            return self.recherche(x.gauche, c)
+        else:
+            return self.recherche(x.droit, c)
 
 
 class Sommet:
@@ -97,5 +101,6 @@ def afficher(T):
 
 arbre = ABR()
 arbre.genArbre(10)
-
+print(arbre.recherche(arbre.racine, 8))
+print(arbre.parcoursInfixe(arbre.recherche(arbre.racine, 8)))
 afficher(arbre)
