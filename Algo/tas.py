@@ -2,14 +2,6 @@ from pylab import legend, show, array, plot
 from math import floor
 from random import randint
 
-dico = {
-    "awdgrdgqdr": 2,
-    "vqdrgg": 3,
-    "bgsdrg": 2,
-    "dgsdrg": 3,
-    "egsqdrg": 2,
-    "fsgrh": 3,
-}
 
 nb_it = 0
 liste_nbit = []
