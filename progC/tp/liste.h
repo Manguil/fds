@@ -1,12 +1,15 @@
 #ifndef liste_h
 #define liste_h
 
-struct cellule {
+struct cellule
+{
     int valeur;
     struct cellule *suivant;
 };
 
-typedef struct cellule * liste;
+typedef struct cellule *liste;
+
+void afficher(liste li);
 
 int longueur(liste li);
 
@@ -31,5 +34,7 @@ liste permuter(liste li);
 liste dupliquer(liste li);
 
 _Bool insererBis(int element, int position, liste *li);
+
+liste extrairePairs(liste li);
 
 #endif /* liste_h */

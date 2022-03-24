@@ -474,6 +474,17 @@ void exo4_2()
 	}
 }
 
+#include "liste.h"
+
+void exo7_1()
+{
+	liste li;
+	li = insereTete(13, insereTete(15, insereTete(4, insereTete(34, insereTete(23, NULL)))));
+	afficher(li);
+	modifier(1, 10, li);
+	afficher(li);
+}
+
 int main()
 {
 	float nb;
@@ -483,6 +494,11 @@ int main()
 	num = nb * 10;
 	switch (num)
 	{
+	default:
+	{
+		printf("il n'y a pas d'exercice !!");
+		break;
+	}
 	case 11:
 		exo1();
 		break;
@@ -518,6 +534,9 @@ int main()
 		break;
 	case 42:
 		exo4_2();
+		break;
+	case 71:
+		exo7_1();
 		break;
 	}
 	return 0;
