@@ -27,6 +27,8 @@ liste supprimer(int position, liste li);
 
 liste modifier(int position, int valeur, liste li);
 
+liste concatenerRec(liste li1, liste li2);
+
 liste concatener(liste li1, liste li2);
 
 liste permuter(liste li);

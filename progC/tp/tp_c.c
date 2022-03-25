@@ -479,10 +479,14 @@ void exo4_2()
 void exo7_1()
 {
 	liste li;
+	liste li2;
+	liste liConcatene;
 	li = insereTete(13, insereTete(15, insereTete(4, insereTete(34, insereTete(23, NULL)))));
+	li2 = insereTete(18, insereTete(19, insereTete(20, NULL)));
 	afficher(li);
-	modifier(1, 10, li);
-	afficher(li);
+	afficher(li2);
+	liConcatene = concatenerRec(li, li2);
+	afficher(liConcatene);
 }
 
 int main()

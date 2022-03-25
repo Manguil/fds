@@ -84,9 +84,16 @@ liste supprimerTete(liste li)
 
 liste supprimer(int position, liste li)
 {
-    if (position == 0)
+    liste li2 = li;
+    if (position == 1)
     {
+        li2 = supprimerTete(li);
     }
+    else
+    {
+        li2 = supprimer(position - 1, li->suivant);
+    }
+    return li2;
 }
 
 liste inserer(int element, int position, liste li)
@@ -123,4 +130,30 @@ liste inserer(int element, int position, liste li)
         prec->suivant = nouvCellule;
         return li;
     }
+}
+
+liste concatenerRec(liste li1, liste li2)
+{
+    if (li2 == NULL)
+    {
+        return li1;
+    }
+    else
+    {
+        int lg = longueur(li1);
+        li2 = concatener(inserer(nieme(1, li2), lg + 1, li1), li2->suivant);
+        return li2;
+    }
+}
+
+liste concatener(liste li1, liste li2)
+{
+    liste liConcatene = li1;
+    while (li1 != NULL)
+    {
+        li1 = li1->suivant;
+    }
+    li1 = li2;
+    afficher(li1);
+    return liConcatene;
 }
