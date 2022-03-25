@@ -9,33 +9,33 @@ struct cellule
 
 typedef struct cellule *liste;
 
-void afficher(liste li);
+void afficher(liste li); //v
 
-int longueur(liste li);
+int longueur(liste li); //v
 
-int longRec(liste li);
+int longRec(liste li); //v
 
-int nieme(int position, liste li);
+int nieme(int position, liste li); //v
 
-liste insereTete(int element, liste lq);
+liste insereTete(int element, liste lq); //v
 
-liste supprimerTete(liste li);
+liste supprimerTete(liste li); //v
 
-liste inserer(int element, int position, liste li);
+liste inserer(int element, int position, liste li); //v
 
-liste supprimer(int position, liste li);
+liste supprimer(int position, liste li); //v
 
-liste modifier(int position, int valeur, liste li);
+liste modifier(int position, int valeur, liste li); //v
 
-liste concatenerRec(liste li1, liste li2);
+liste concatenerRec(liste li1, liste li2); //v
 
-liste concatener(liste li1, liste li2);
+liste concatener(liste li1, liste li2); //v
 
-liste permuter(liste li);
+liste permuter(int position1, int position2, liste li); //v
 
-liste dupliquer(liste li);
+liste dupliquer(liste li, liste li2);
 
-_Bool insererBis(int element, int position, liste *li);
+_Bool insererBis(int element, int position, liste li);
 
 liste extrairePairs(liste li);
 

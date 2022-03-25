@@ -59,7 +59,8 @@ int main()
             printf("==> Fonction non implantee \n\n");
             break;
         case 'V':
-            printf("==> Fonction non implantee \n\n");
+            while (l[i]!= NULL) l[i]=supprimerTete(l[i]);
+            printf("liste supprimée \n\n");
             break;
         case 'P':
             printf("==> Fonction non implantee \n\n");

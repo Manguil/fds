@@ -482,11 +482,11 @@ void exo7_1()
 	liste li2;
 	liste liConcatene;
 	li = insereTete(13, insereTete(15, insereTete(4, insereTete(34, insereTete(23, NULL)))));
-	li2 = insereTete(18, insereTete(19, insereTete(20, NULL)));
+	li2 = insereTete(18, insereTete(19,insereTete(5, insereTete(20, NULL))));
+	li = supprimer(1,li);
 	afficher(li);
-	afficher(li2);
-	liConcatene = concatenerRec(li, li2);
-	afficher(liConcatene);
+	//liConcatene = permuter(2, 4,li);
+	//afficher(liConcatene);
 }
 
 int main()

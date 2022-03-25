@@ -21,7 +21,8 @@ liste modifier(int position, int valeur, liste li)
         li->valeur = valeur;
         return li2;
     }
-    return modifier(position - 1, valeur, li->suivant);
+    li = modifier(position - 1, valeur, li->suivant);
+    return li2;
 }
 
 int longueur(liste li)
@@ -141,7 +142,7 @@ liste concatenerRec(liste li1, liste li2)
     else
     {
         int lg = longueur(li1);
-        li2 = concatener(inserer(nieme(1, li2), lg + 1, li1), li2->suivant);
+        li2 = concatenerRec(inserer(nieme(1, li2), lg + 1, li1), li2->suivant);
         return li2;
     }
 }
@@ -149,11 +150,23 @@ liste concatenerRec(liste li1, liste li2)
 liste concatener(liste li1, liste li2)
 {
     liste liConcatene = li1;
-    while (li1 != NULL)
+    while (li1->suivant != NULL)
     {
         li1 = li1->suivant;
     }
-    li1 = li2;
-    afficher(li1);
+    li1->suivant = li2;
     return liConcatene;
+}
+
+liste permuter(int position1, int position2, liste li){
+    int val1 = nieme(position1,li);
+    int val2 = nieme(position2,li);
+    li = modifier(position1,val2,li);
+    afficher(li);
+    li = modifier(position2,val1,li);
+    return li;
+}
+
+liste dupliquer(int choix,liste li1, liste li2){
+    if (choix) li2=li1;
 }
