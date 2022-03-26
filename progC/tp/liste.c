@@ -158,15 +158,19 @@ liste concatener(liste li1, liste li2)
     return liConcatene;
 }
 
-liste permuter(int position1, int position2, liste li){
-    int val1 = nieme(position1,li);
-    int val2 = nieme(position2,li);
-    li = modifier(position1,val2,li);
+liste permuter(int position1, int position2, liste li)
+{
+    int val1 = nieme(position1, li);
+    int val2 = nieme(position2, li);
+    li = modifier(position1, val2, li);
     afficher(li);
-    li = modifier(position2,val1,li);
+    li = modifier(position2, val1, li);
     return li;
 }
 
-liste dupliquer(int choix,liste li1, liste li2){
-    if (choix) li2=li1;
+liste dupliquer(int choix, liste li1, liste li2)
+{
+    if (choix)
+        return li2 = li1;
+    return li1;
 }

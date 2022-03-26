@@ -2,6 +2,7 @@
 #include <math.h>
 #include <time.h>
 #include "parfait.h"
+#define scanf scanf_s
 
 void exo1()
 {
@@ -478,15 +479,13 @@ void exo4_2()
 
 void exo7_1()
 {
-	liste li;
-	liste li2;
+	liste li = insereTete(13, insereTete(15, insereTete(4, insereTete(34, insereTete(23, NULL)))));
+	liste li2 = insereTete(18, insereTete(19, insereTete(5, insereTete(20, NULL))));
 	liste liConcatene;
-	li = insereTete(13, insereTete(15, insereTete(4, insereTete(34, insereTete(23, NULL)))));
-	li2 = insereTete(18, insereTete(19,insereTete(5, insereTete(20, NULL))));
-	li = supprimer(1,li);
-	afficher(li);
-	//liConcatene = permuter(2, 4,li);
-	//afficher(liConcatene);
+	li = supprimer(1, li);
+	afficher(li2);
+	// liConcatene = permuter(2, 4,li);
+	// afficher(liConcatene);
 }
 
 int main()

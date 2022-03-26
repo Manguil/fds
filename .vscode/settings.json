@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "temps.h": "c"
-    },
-    "python.linting.enabled": true,
-    "C_Cpp.errorSquiggles": "Disabled"
-}
