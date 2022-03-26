@@ -1,13 +1,11 @@
 #ifndef liste_h
 #define liste_h
 
-struct cellule
+typedef struct cellule
 {
     int valeur;
     struct cellule *suivant;
-};
-
-typedef struct cellule *liste;
+} * liste;
 
 void afficher(liste li); // v
 
