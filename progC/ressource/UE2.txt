@@ -1,0 +1,12 @@
+15100322    Tom  Petit  12.5
+15363222    Alain Terieur 11.3
+12345235    Rachid Amar  ABI
+14222274    Sophie Sticket 18.5
+15339008    Jérôme Lantin   4,5
+14566667    Corentin   Louvain  ABJ
+15234331    Louis   Martinez    20
+14445433    Albert Debout        12
+15660078    Lena    Loupi   16.5
+14555555  Zoé Tout Lemonde  2
+15233339    Julie  Arçon ABI
+15342122  Paul Baluche    55

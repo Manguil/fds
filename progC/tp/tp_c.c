@@ -286,7 +286,7 @@ void tp4_2()
 	}
 }
 
-void tp7_1()
+int tp7_1()
 {
 	liste l[2];
     l[0] = insereTete(133, insereTete(15, insereTete(4, insereTete(34, insereTete(23, NULL)))));
@@ -369,8 +369,46 @@ void tp7_1()
     } while (choix != 'Q');
     return 0;
 }
+#include <stdlib.h>
 
-int main()
+void traiterNotes(FILE fichier){
+	
+}
+
+void tp8_2(int argc, char** argv){
+	int num; char prenom[51]; nom[51]; float note; char chaine[10]
+	FILE* fd = fopen(argv[1], "r");
+	int nbChamps;
+	if (argc != 2){
+		printf("mauvais nombre d'argument");
+		exit(EXIT_FAILURE);
+	}
+	else if (fd == NULL) {
+		printf("Probleme de lecture");
+		exit(EXIT_FAILURE);
+	}
+	else {
+		do{
+			nbChamps = fscanf(fd, "%i %s %s %f", &num, prenom, nom, &note);
+			switch (nbChamps) {
+				case 4: {
+					printf("%i %s %s %f\n",&num, prenom, nom, &note); break;
+				}
+				case 3: {
+					fscanf(fd, "%s", &chaine);
+					printf("il y a %s", )
+					break;
+				}
+			}
+		}
+		while (nbChamps != EOF)
+		{
+			
+		}
+	}
+}
+
+int main(int argc, char** argv)
 {
 	float nb;
 	int num;
@@ -447,6 +485,11 @@ int main()
 	case 71:
 	{
 		tp7_1();
+		break;
+	}
+	case 82:
+	{
+		tp8_2(argc, argv);
 		break;
 	}
 	}
