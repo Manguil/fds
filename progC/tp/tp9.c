@@ -8,7 +8,7 @@ FILE* fd = fopen(nom_image, "r");
 if (fd == NULL) {printf("Le fichier n'est pas accessible !\n");exit(EXIT_FAILURE);}
 char magicNumber[3];
 int niveauxDeGris;
-fscanf(fd, "%s", magicNumber);
+fscanf(fd, "%s", magicNumber)
 if (strcmp(magicNumber,"P5") != 0){printf("Ce n'est pas un PGM binaire !\n");exit(EXIT_FAILURE);}
 fscanf(fd, "%d %d\n%d", nb_lignes, nb_colonnes, &niveauxDeGris);
 printf("Nombre de lignes = %d et colonnes = %d %d\n", *nb_lignes, *nb_colonnes, niveauxDeGris);
