@@ -16,7 +16,7 @@ fclose(fd);
 }
 
 void lire_image_pgm(char nom_image[], OCTET *pt_image, int taille_image) {
-FILE* fd = fopen(nom_image, "r")
+FILE* fd = fopen(nom_image, "r");
 int nb_lignes, nb_colonnes, niveauxDeGris;
 fscanf(fd, "P5\n%d %d\n%d\n", &nb_lignes, &nb_colonnes, &niveauxDeGris);
 fread(pt_image, sizeof(OCTET), taille_image, fd);
