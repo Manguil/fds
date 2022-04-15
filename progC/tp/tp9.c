@@ -30,10 +30,6 @@ fwrite(pt_image, sizeof(OCTET), nb_lignes*nb_colonnes, fd);
 fclose(fd);
 }
 
-void lire_nb_lignes_colonnes_image_ppm(char nom_image[], int *nb_lignes, int *nb_colonnes) {}
-void lire_image_ppm(char nom_image[], OCTET *pt_image, int taille_image) {}
-void ecrire_image_ppm(char nom_image[], OCTET *pt_image, int nb_lignes, int nb_colonnes) {}
-
 int main(int argc, char** argv) {
 if (argc != 3) {printf("Le nombre de paramètres est incorrect !\n"); exit(EXIT_FAILURE);}
 
