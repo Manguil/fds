@@ -6,9 +6,6 @@
 #include "tp4.h"
 #include "liste.h"
 
-#define scanf scanf_s
-#define fscanf fscanf_s
-
 void tp1_1()
 {
 	int a, b, som, prod;
