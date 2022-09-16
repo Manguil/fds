@@ -10,7 +10,7 @@
 
 <body>
     <form name='commande' method='get'>
-        <h1>Commande</h1> <br>
+        <h1>Commandes</h1> <br>
         <table>
             <tr>
                 <th>Quantité</th>
@@ -46,17 +46,18 @@
                 };
             }
             echo '<tr><td><th>TOTAL sans reduc</th></td><td>' . $total . ' €</td></tr>';
-            if (isset($_GET["codeReduc"])){
+            if (isset($_GET["codeReduc"])) {
                 $code = $_GET["codeReduc"];
-                if ($code == "DIXPOURCENT"){
-                    echo '<tr><td><th>TOTAL avec reduc</th></td><td>' . $total - ($total*(10/100)) . ' €</td></tr>';
+                if ($code == "DIXPOURCENT") {
+                    echo '<tr><td><th>TOTAL avec reduc</th></td><td>' . $total - ($total * (10 / 100)) . ' €</td></tr>';
                 };
             };
             ?>
         </table>
         <label for="codeReduc">Rentrer un code promo : </label>
-        <input type="text" name="codeReduc" value="<?php if (isset($_GET["codeReduc"])){
-                echo $_GET["codeReduc"];}; ?>">
+        <input type="text" name="codeReduc" value="<?php if (isset($_GET["codeReduc"])) {
+                                                        echo $_GET["codeReduc"];
+                                                    }; ?>">
         <hr>
         <p>Nouvel article :</p>
         <select name="objet" id="objet">
