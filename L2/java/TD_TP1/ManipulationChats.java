@@ -1,6 +1,7 @@
 public class ManipulationChats {
 	public static void main(String[] args) {
-		Chat mat = new Chat("bob", "noir", true, 2015, false);
-		mat.toString();
+		Chat Azrael = new Chat("Azraël", "roux et blanc", false, 2017, false);
+		Chat Grosminet = new Chat("Grosminet", "gris", true, 2020, true);
+		System.out.println(Azrael.toString() + Grosminet.toString());
 	}
 }
