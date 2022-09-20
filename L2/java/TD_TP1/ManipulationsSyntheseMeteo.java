@@ -6,6 +6,8 @@ public class ManipulationsSyntheseMeteo {
         System.out.println(nimes.temperatureMensuelleMax());
 
         SyntheseMeteo lille = new SyntheseMeteo("Lille");
-        lille.setTmin(1, -3);
+        nimes.setTmin2(Mois.JANVIER, -3);
+        lille.setTmin(13, 10);
+        System.out.println(nimes.toString());
     }
 }
