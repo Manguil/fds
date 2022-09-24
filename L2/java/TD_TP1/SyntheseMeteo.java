@@ -40,23 +40,20 @@ public class SyntheseMeteo {
                 tmin[numMois - 1] = valeur;
             }
         }
-    }JANVIER
-        if (tmin != null) {
-            if ((numMois >= 1 && numMois <= 12) && (valeur >= -100 && valeur <= 100)) {
-                tmin[numMois - 1] = valeur;
-            }
-        }
     }
+    
 
     public Mois moisLePlusChaud() {
         float result = tmax[0];
         int pos = 0;
         for (int i = 0; i < tmax.length; i++) {
             if (tmax[i] > result) {
-                result = tmax[i];JANVIER
+                result = tmax[i];
+                pos = i;
+            }
+        }
         return numMoisVersMois(pos+1);
     }
-
     private Mois numMoisVersMois(int numMois){
         //return Mois.values()[numMois-1]; // Cette instruction aurait suffit mais la comprenez-vous ?
         switch (numMois){
