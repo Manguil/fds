@@ -1,12 +1,12 @@
 
 public class Compteur {
-	// COMPLETER ICI
-
+	private /*static (pour attribut de classe et pas d'instance)*/ int nbCompteurs;
+	private int valeur;
 
 	public Compteur() {
 		nbCompteurs++;
 	}
-	
+
 	// pour incrémenter la valeur du compteur
 	public void incrVal() {
 		valeur++;
@@ -18,9 +18,9 @@ public class Compteur {
 	}
 
 	public String toString() {
-		return "valeur=" + valeur + " ; nombre de compteurs = "+nbCompteurs;
+		return "valeur=" + valeur + " ; nombre de compteurs = " + nbCompteurs;
 	}
-	
+
 	public int getValeur() {
 		return valeur;
 	}

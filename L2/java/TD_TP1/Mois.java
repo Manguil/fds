@@ -10,5 +10,5 @@ public enum Mois {
     SEPTEMBRE,
     OCTOBRE,
     NOVEMBRE,
-    DECEMBRE;
+    DECEMBRE
 }
