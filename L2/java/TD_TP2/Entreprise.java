@@ -25,4 +25,8 @@ public class Entreprise {
     public String getsuffixeMailReferent(){
         return suffixeMailReferent;
     }
+
+    public String toString(){
+        return  nom + " est situé à " + adresse;
+    }
 }
