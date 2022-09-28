@@ -2,5 +2,6 @@
     "files.associations": {
         "stdio.h": "c"
     },
-    "java.dependency.syncWithFolderExplorer": false
+    "java.dependency.syncWithFolderExplorer": true,
+    "java.dependency.packagePresentation": "flat"
 }

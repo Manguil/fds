@@ -1,31 +1,31 @@
-public class Point {
+public class Points {
     private double x;
     private double y;
 
-    public Point() {
+    public Points() {
         x = 0;
         y = 0;
     }
 
-    public Point(double x, double y) {
+    public Points(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
     public String toString() {
-        return "Point(" + x + "," + y + ")";
+        return "Points(" + x + "," + y + ")";
     }
 
     public double module() {
         return Math.sqrt(Math.pow(x, 2) + Math.pow(y,2));
     }
 
-    public double distanceDe(Point p) {
+    public double distanceDe(Points p) {
         return Math.sqrt(Math.pow((x - p.x),2) + Math.pow((y - p.y),2));
     }
 
-    public Point symetrique() {
-        Point temp = new Point(-x, -y);
+    public Points symetrique() {
+        Points temp = new Points(-x, -y);
         return temp;
     }
 
