@@ -47,7 +47,8 @@ class DocumentCrypté extends Document {
     public static String crypter(String s) {
         String sCrypter = "";
         for (int i = 0; i < s.length(); i++) {
-            sCrypter += (s.charAt(i)+ 0);
+            int temp = (int) s.charAt(i)^2;
+            sCrypter += (char) temp;
         }
         return sCrypter;
     }
@@ -55,7 +56,8 @@ class DocumentCrypté extends Document {
     public static String decrypter(String s) {
         String sDecrypter = "";
         for (int i = 0; i < s.length(); i++) {
-            sDecrypter += (s.charAt(i)+"");
+            int temp = (int) s.charAt(i)^2;
+            sDecrypter += (char) temp;
         }
         return sDecrypter;
     }
