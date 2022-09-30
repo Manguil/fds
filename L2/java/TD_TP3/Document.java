@@ -45,19 +45,19 @@ class DocumentCrypté extends Document {
     }
 
     public static String crypter(String s) {
-        String sCrypte = "";
-        for (int i=0; i<s.length();i++)  {
-            int temp = s.charAt(i)^6;
-            sCrypte += (char)temp;
+        String sCrypter = "";
+        for (int i = 0; i < s.length(); i++) {
+            int temp = (int) s.charAt(i)^2;
+            sCrypter += (char) temp;
         }
         return sCrypte;
     }
 
     public static String decrypter(String s) {
-        String sDecrypte = "";
-        for (int i=0; i<s.length();i++)  {
-            int temp=s.charAt(i)^6; 
-            sDecrypte += (char)temp;
+        String sDecrypter = "";
+        for (int i = 0; i < s.length(); i++) {
+            int temp = (int) s.charAt(i)^2;
+            sDecrypter += (char) temp;
         }
         return sDecrypte;
     }

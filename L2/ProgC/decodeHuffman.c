@@ -6,11 +6,30 @@
 
 char* ctos(char c)
 {
-    char* s = malloc(1);
+    char* s = malloc(sizeof(char*));
     s[0] = c;
     return s;
 }
 
+int estPresent(char* s1, char* s2)
+{
+    int tailleMin = 0;
+    if (strlen(s1) <= strlen(s2))
+    {
+        tailleMin = strlen(s1);
+    }
+    else
+    {
+        return 0;
+    }
+    if (tailleMin == 0) return 0;
+    for (int k = 0; k < tailleMin ; k++)
+        {
+            if (s1[k]!= s2[k])
+                return 0;
+        } 
+    return 1;
+}
 
 char* encoder(char** codage, char* s) 
 {
@@ -32,15 +51,19 @@ char* decoder(char** codage, char* s)
     {
         for(int j='A'; j <= 'Z'; j++)
         {
-            if (codage[j] == temp)
+            if (estPresent(codage[j], temp))
             {
-                strcat(result, ctos(j));
+                i+=strlen(temp);
+                strcat(result, temp);
                 temp = "";
-                i+=j;
                 break;
             }
-            strcat(temp, s[i]);
         }
+        printf("efv\n");
+        printf("%s\n", ctos(s[i]));
+        strcat(temp, ctos(s[i]));
+        printf("efv\n");
+        i++;
     }
     return result;
 }
@@ -59,6 +82,7 @@ int main(int argc, char **argv)
     codage['C'] = "101";
     char* s = "CAC";
     char* result = encoder(codage,s);
-    char* result2 = decoder(codage,s);
+    printf("%s\n", result);
+    char* result2 = decoder(codage,result);
     printf("%s\n", result2);
 }
