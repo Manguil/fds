@@ -50,7 +50,7 @@ class DocumentCrypté extends Document {
             int temp = (int) s.charAt(i)^2;
             sCrypter += (char) temp;
         }
-        return sCrypte;
+        return sCrypter;
     }
 
     public static String decrypter(String s) {
@@ -59,6 +59,6 @@ class DocumentCrypté extends Document {
             int temp = (int) s.charAt(i)^2;
             sDecrypter += (char) temp;
         }
-        return sDecrypte;
+        return sDecrypter;
     }
 }
