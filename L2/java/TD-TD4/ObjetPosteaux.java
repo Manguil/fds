@@ -119,7 +119,11 @@ class Colis extends ObjetPosteaux {
 
     @Override
     public String toString() {
-        return "Colis " + super.toString() + "/" + getVolume() + "/" + prix;
+        return "Colis" + super.toString() + "/" + getVolume() + "/" + prix;
+    }
+
+    public String toString(boolean isColisExpress) {
+        return super.toString() + "/" + getVolume() + "/" + prix;
     }
 }
 
@@ -156,7 +160,7 @@ class ColisExpress extends Colis {
 
     @Override
     public String toString() {
-        return "Colis Express " + super.toString() + "/" + getPoids() + "/" + numeroSuivi;
+        return "Colis Express " + super.toString(true) + "/" + getPoids() + "/" + numeroSuivi;
     }
 
     public String Envoi() {
