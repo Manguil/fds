@@ -11,11 +11,11 @@ public class Compte {
 		return Solde;
 	}
 
-	public void deposer(int argentADeposer){
+	public void deposer(double argentADeposer){
 		Solde += argentADeposer;
 	}
 
-	public void prelevement(int argentAPrelever){
+	public void prelevement(double argentAPrelever){
 		if (Solde >= argentAPrelever){
 			Solde -= argentAPrelever;
 		} else {
@@ -38,11 +38,11 @@ class compteRemunere extends Compte {
 	}
 
 	public void Interet(){
-		//
+		super.deposer(getSolde()*pourcentageRemuneration);
 	}
 
 	@Override
-	public void deposer(int argentADeposer){
+	public void deposer(double argentADeposer){
 		if ((getSolde() + argentADeposer) <= plafond){
 			super.deposer(argentADeposer);
 		} else {

@@ -2,9 +2,9 @@ Exercice 1:
 
 L1 - Compile
 L2 - Compile pas
-L3 - Compile pas
+L3 - Compile
 L4 - Compile
-L5 - Compile pas
+L5 - Compile
 L6 - Compile
 L7 - Compile pas
 L8 - Compile pas
@@ -13,19 +13,19 @@ Exercice 2:
 
 pas de constructeur pour les classes B et C
 pas de return à m0
-Il faut enlever le public
+Il faut enlever le public (ou pas)
 
 Exercice 3:
 
-public void m1(A a) {}
-
+public void m1(A aa) {}
+ 
 Exercice 4:
 
 public B m0(A a) {}
 
 Exercice 5:
 
-public A m0(B b) {}
+public A m0(C c) {}
 
 Exercice 6:
 
