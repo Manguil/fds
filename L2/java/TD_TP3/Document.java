@@ -34,7 +34,7 @@ class DocumentAvecMentionsLegales extends Document {
 
     @Override
     public String export() {
-        return getTitre() + "\t\n\n" + getTexte() + "\n" + mentionsLegales;
+        return super.export() + "\n" + mentionsLegales;
     }
 }
 
