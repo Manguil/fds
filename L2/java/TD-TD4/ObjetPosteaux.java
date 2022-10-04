@@ -119,7 +119,7 @@ class Colis extends ObjetPosteaux {
 
     @Override
     public String toString() {
-        return "Colis" + super.toString() + "/" + getVolume() + "/" + prix;
+        return "Colis " + super.toString() + "/" + getVolume() + "/" + prix;
     }
 
     public String toString(boolean isColisExpress) {
