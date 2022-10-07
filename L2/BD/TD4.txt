@@ -1,0 +1,5 @@
+1- Select referenceP, designationP From Piece
+2- Select referenceP, designationP From Piece where numero_operateur = "OP22"
+3- Select referenceP, designationP From Piece where quantite≥200
+4- Select numero_operateur from qualifie_sur where reference_machine = "M12"
+5-  

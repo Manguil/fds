@@ -1,0 +1,33 @@
+BD :
+
+TD2 :
+
+Donnez la d ́efinition d’une cle primaire.
+C’est un attribut unique.
+
+Donnez la d ́efinition d’une cl ́e ́etrang`ere.
+C’est un attribut appartenant à une autre relation
+
+3. D ́eterminez les cl ́es primaires et, ́eventuellement, les cl ́es ́etrang`eres
+
+de chacune des relations.
+
+Numero clé primaire de opérateur
+
+Reference clé primaire de Machine
+
+ReferenceP clé primaire de pièce
+
+numero_operateur clé primaire de Qualifie_sur
+
+4. Donnez un exemple de tuples dont l’insertion dans la table “Opera-
+
+teur” provoquerait une erreur.
+
+(« OP42 », « bb », « gg »,6)
+
+5. Donnez un exemple de tuples dont l’insertion dans la table “Piece”
+
+provoquerait une erreur.
+
+(« P1 », « Piece1 », …, …)
