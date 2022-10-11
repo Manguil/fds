@@ -1,5 +1,33 @@
-1- Select referenceP, designationP From Piece
-2- Select referenceP, designationP From Piece where numero_operateur = "OP22"
-3- Select referenceP, designationP From Piece where quantite≥200
-4- Select numero_operateur from qualifie_sur where reference_machine = "M12"
-5-  
+1- select referenceP, designationP from Piece;
+
+2- select referenceP, designationP from Piece where numero_operateur = "OP22";
+
+3- select referenceP, designationP from Piece where quantite≥200;
+
+4- select numero_operateur from qualifie_sur where reference_machine = "M12";
+
+5- select numero_operateur from Piece where referenceP = "P1";
+
+6- select reference_machine, designationP from Piece;
+
+7- select numero from Operateur where age <= 40 and age >= 30;
+
+8- select min(age),max(age),somme(age)/count(age) from Operateur;
+
+9- select distinct numero_operateur from qualifie_sur;
+
+10- select count(quantite) from Piece;
+
+11- select count(quantite)*6 from Piece;
+
+12- select reference_machine, count(*) from qualifie_sur group by reference_machine;
+
+13- select reference_machine, count(*) from Piece group by reference_machine;
+
+14- select numero_operateur, sum(quantite) from Piece group by numero_operateur;
+
+15- select reference_machine, sum(quantite)/count(*) from Piece group by reference_machine;
+
+16- select numero_operateur from qualifie_sur group by numero_operateur having count(*)>2;
+
+17- select numero_operateur from qualifie_sur group by numero_operateur having count(*)>2 and year(date)>=2000;
