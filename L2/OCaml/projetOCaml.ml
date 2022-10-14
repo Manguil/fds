@@ -111,17 +111,11 @@ let rec intSymb s i = match i with
   
 
 (* Q9 *) 
-let rec intNeg s i = function
-  | if(intSymb = Zero) -> Un
-    
-  
+let rec intNeg s i = if(intSymb s i == Zero) then Un else Zero 
 ;;
 
 
-let rec intAnd s1 s2  i = match i with
-  |(symb,Un)::q when symb = s1 -> Zero
-  |(symb,Zero)::q when symb = s -> Un
-  |_::q -> intNeg s q
+let intAnd s1 s2 i = if()
 ;;
 
 
