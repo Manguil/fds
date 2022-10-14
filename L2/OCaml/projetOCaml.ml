@@ -111,37 +111,66 @@ let rec intSymb s i = match i with
   
 
 (* Q9 *) 
-let rec intNeg s i = if(intSymb s i == Zero) then Un else Zero 
+let intTop = Un
 ;;
 
 
-let intAnd s1 s2 i = if(intSymb s1 i == Un && intSymb == Un) then Un else Zero
+let intBot = Zero
 ;;
 
 
-let rec intOr s1 s2 i = if (intSymb s1 i == Un || intSymb s2 i == Un) then Un else Zero
+let intNeg = function
+  | Un -> Zero
+  | Zero -> Un
 ;;
 
 
-let rec intImp s1 s2 i = if (Not (intSymb s1 i == Un) || intSymb s2 i == 1) then Un else Zero
+let intAnd s2 = function
+  | Un -> if (s2 == Un) then Un else Zero
+  | _ -> Zero
 ;;
 
 
-let rec intEqu s1 s2 i = if (intSymb s1 i == intSymb s2 i) then Un else Zero
+let rec intOr s2 = function
+  | Zero -> if (s2 == Zero) then Zero else Un
+  | _ -> Un
+;;
+
+
+let rec intImp s2 = function
+  | Un -> if (s2 == Zero) then Zero else Un
+  | _ -> Un
+;;
+
+
+let rec intEqu s2 = function
+  | Zero -> if (s2 == Zero) then Un else Zero
+  | Un -> if (s2 == Un) then Un else Zero
 ;;
 
 
 
 (* Q10 *)
 let rec valV fbf i = match fbf with
-  |Top -> intTop
-  |Bot -> intBot
-  |Symb a -> intSymb a i
-  |Not a
-    
+  | Top -> intTop
+  | Bot -> intBot
+  | Symb s -> intSymb s i
+  | Not s -> intNeg (valV s i)
+  | And (s1,s2) -> intAnd (valV s1 i) (valV s2 i)
+  | Or (s1,s2) -> intOr (valV s1 i) (valV s2 i)
+  | Imp (s1,s2) -> intImp (valV s1 i) (valV s2 i)
+  | Equ (s1,s2) -> intEqu (valV s1 i) (valV s2 i)
+;;
 
 
-    
+
+(* Q11 *)
+let rec modele fbf i = if (valV fbf i == Un) then true else false
+;;
+
+
+
+(* Q12 *)
 
     
     
