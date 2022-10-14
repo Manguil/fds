@@ -10,6 +10,7 @@ type prop =
 ;;
 
 
+
 (* Q2 *)
 let rec nbc = function
   | Top -> 0
@@ -21,6 +22,7 @@ let rec nbc = function
   | Imp(a, b) -> 1 + nbc a + nbc b
   | Equ(a, b) -> 1 + nbc a + nbc b
 ;;
+
 
 
 (* Q3 *)
@@ -36,6 +38,7 @@ let prof = function
 ;;
 
 
+
 (* Q4 *)
 let rec count n li = match li with 
   | [] -> 0
@@ -44,11 +47,13 @@ let rec count n li = match li with
 ;;
 
 
+
 let rec supr_doublons = function
   | [] -> []
   | t::q when count t q = 0 -> t::supr_doublons q
   | _::q -> supr_doublons q
 ;;
+
 
 
 let rec creer_li_var = function
@@ -63,7 +68,9 @@ let rec creer_li_var = function
 ;;
   
 
+
 let sp fbf = supr_doublons (creer_li_var fbf);;
+
 
 
 (* Q5 *)
@@ -79,6 +86,7 @@ let rec affiche = function
 ;;
 
 
+
 (* Q6 *)
 
 (* Q7 *)
@@ -86,8 +94,84 @@ type valVerite = Zero | Un ;;
 
 type interpretation = (string * valVerite) list;;
 
-let I1 = [("a",Un) ; ("b",Zero) ; ("c",Un)];;
+let i1 = [("a",Un) ; ("b",Zero) ; ("c",Un)];;
 
-let I2 = [("a",Zero) ; ("b",Zero) ; ("c",Zero)];;
+let i2 = [("a",Zero) ; ("b",Zero) ; ("c",Zero)];;
 
-let I3 = [("a",Un) ; ("b",Un) ; ("c",Un)];;
+let i3 = [("a",Un) ; ("b",Un) ; ("c",Un)];;
+
+
+
+(* Q8 *) 
+let rec intSymb s i = match i with
+  |(symb,v)::q when symb = s -> v
+  |_::q -> intSymb s q
+;;
+    
+  
+
+(* Q9 *) 
+let rec intNeg s i = function
+  | if(intSymb = Zero) -> Un
+    
+  
+;;
+
+
+let rec intAnd s1 s2  i = match i with
+  |(symb,Un)::q when symb = s1 -> Zero
+  |(symb,Zero)::q when symb = s -> Un
+  |_::q -> intNeg s q
+;;
+
+
+let rec intOr s i = match i with
+  |(symb,Un)::q when symb = s -> Zero
+  |(symb,Zero)::q when symb = s -> Un
+  |_::q -> intNeg s q
+;;
+
+
+let rec intImp s i = match i with
+  |(symb,Un)::q when symb = s -> Zero
+  |(symb,Zero)::q when symb = s -> Un
+  |_::q -> intNeg s q
+;;
+
+
+let rec intEqu s i = match i with
+  |(symb,Un)::q when symb = s -> Zero
+  |(symb,Zero)::q when symb = s -> Un
+  |_::q -> intNeg s q
+;;
+
+
+
+(* Q10 *)
+let rec valV fbf i = match fbf with
+  |Top -> intTop
+  |Bot -> intBot
+  |Symb a -> intSymb a i
+  |Not a
+    
+
+
+    
+
+    
+    
+
+
+    
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
