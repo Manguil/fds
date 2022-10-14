@@ -115,28 +115,19 @@ let rec intNeg s i = if(intSymb s i == Zero) then Un else Zero
 ;;
 
 
-let intAnd s1 s2 i = if()
+let intAnd s1 s2 i = if(intSymb s1 i == Un && intSymb == Un) then Un else Zero
 ;;
 
 
-let rec intOr s i = match i with
-  |(symb,Un)::q when symb = s -> Zero
-  |(symb,Zero)::q when symb = s -> Un
-  |_::q -> intNeg s q
+let rec intOr s1 s2 i = if (intSymb s1 i == Un || intSymb s2 i == Un) then Un else Zero
 ;;
 
 
-let rec intImp s i = match i with
-  |(symb,Un)::q when symb = s -> Zero
-  |(symb,Zero)::q when symb = s -> Un
-  |_::q -> intNeg s q
+let rec intImp s1 s2 i = if (Not (intSymb s1 i == Un) || intSymb s2 i == 1) then Un else Zero
 ;;
 
 
-let rec intEqu s i = match i with
-  |(symb,Un)::q when symb = s -> Zero
-  |(symb,Zero)::q when symb = s -> Un
-  |_::q -> intNeg s q
+let rec intEqu s1 s2 i = if (intSymb s1 i == intSymb s2 i) then Un else Zero
 ;;
 
 
