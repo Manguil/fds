@@ -53,5 +53,5 @@ class compteRemunere extends Compte {
 	@Override
 	public String toString(){
 		return super.toString()+" avec un pourcentage de remuneration de "+pourcentageRemuneration+" et un plafond de "+plafond;
-	}
+	}	
 }

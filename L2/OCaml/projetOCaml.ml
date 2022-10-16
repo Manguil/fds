@@ -11,6 +11,26 @@ type prop =
 
 
 
+(* Q1 *)
+let f1 = Equ(And(Symb "a", Symb "b"), Or(Not(Symb "a"), Symb "b"))
+;; (* f1 = a∧b ⇔ ¬a∨b *) 
+   
+let f2 = Or(Not(And(Symb "a", Not(Symb "b"))), Not(Imp(Symb "a", Symb "b")))
+;; (* f2 = ¬(a∧¬b) ∨ ¬(a⇒b) *)
+   
+let f3 = And(Not(Imp(Symb "a", Or(Symb "a", Symb "b"))), Not(Not(And(Symb "a", Or(Symb "b", Not(Symb "c"))))))
+;; (* f3 = ¬(a ⇒ a∨b) ∧ ¬¬(a∧(b∨¬c)) *)
+   
+let f4 = And(And(And(And(And(Or(Or(Not(Symb "a"), Symb "b"), Symb "d")
+                            , Or(Not(Symb "d"), Symb "c"))
+                        , Or(Symb "c", Symb "a"))
+                    , Or(Not(Symb "c"), Symb "b"))
+                , Or(Not(Symb "c"), Not(Symb "b")))
+            , Or(Not(Symb "b"), Symb "d"))
+;; (* f4 = (¬a∨b∨d) ∧ (¬d∨c) ∧ (c∨a) ∧ (¬c∨b) ∧ (¬c∨¬b) ∧ (¬b∨d) *)
+
+
+
 (* Q2 *)
 let rec nbc = function
   | Top -> 0
@@ -74,20 +94,43 @@ let sp fbf = supr_doublons (creer_li_var fbf);;
 
 
 (* Q5 *)
-let rec affiche = function
-  | Symb a -> "a"
+let rec afficheP = function
+  | Symb a -> a
   | Top -> "⊤"
   | Bot -> "⊥" 
-  | Not a -> "¬" ^ "(" ^  affiche a ^ ")"
-  | And(a, b) -> "(" ^ affiche a ^ "∧" ^ affiche b ^ ")"
-  | Or(a, b) -> "(" ^ affiche a ^ "∨" ^ affiche b ^ ")"
-  | Imp(a, b) -> "(" ^ affiche a ^ "⇒" ^ affiche b ^ ")"
-  | Equ(a, b) -> "(" ^ affiche a ^ "⇔" ^ affiche b ^ ")"
+  | Not a -> "¬" ^ "(" ^  afficheP a ^ ")"
+  | And(a, b) -> "(" ^ afficheP a ^ "∧" ^ afficheP b ^ ")"
+  | Or(a, b) -> "(" ^ afficheP a ^ "∨" ^ afficheP b ^ ")"
+  | Imp(a, b) -> "(" ^ afficheP a ^ "⇒" ^ afficheP b ^ ")"
+  | Equ(a, b) -> "(" ^ afficheP a ^ "⇔" ^ afficheP b ^ ")"
 ;;
 
 
 
 (* Q6 *)
+(* Equ(And(Symb "a", Symb "b"), Or(Not(Symb "a"), Symb "b")) *)
+(* f1 = a∧b ⇔ ¬a∨b *) 
+let rec affiche = function
+  | Symb a -> a
+  | Top -> "⊤"
+  | Bot -> "⊥"
+  | Not (Symb a) -> "¬" ^ a
+  | Not a -> "¬" ^ "(" ^  affiche a ^ ")"
+  | And(And(a, b), c) -> affiche a ^ "∧" ^ affiche b  ^ "∧" ^ affiche c
+  | And(a, And(b, c)) -> affiche a ^ "∧" ^ affiche b  ^ "∧" ^ affiche c
+  | And(Symb a, Symb b) -> a ^ "∧" ^ b
+  | And(Symb a, b) -> a ^ "∧(" ^ affiche b ^ ")"
+  | And(a, Symb b) -> "(" ^ affiche a ^ ")∧" ^ b
+  | And(a, b) -> "(" ^ affiche a ^ ")∧(" ^ affiche b ^ ")"
+  | Or(a, Or(b, c)) -> affiche a ^ "∨(" ^ affiche b  ^ "∨" ^ affiche c ^ ")"
+  | Or(a, b) -> affiche a ^ "∨" ^ affiche b
+  | Imp(Imp(a, b), c) -> "(" ^ affiche a  ^ "⇒" ^ affiche b ^ ")⇒" ^ affiche c
+  | Imp(a, b) -> affiche a ^ "⇒" ^ affiche b 
+  | Equ(a, Equ(b, c)) -> affiche a ^ "⇔(" ^ affiche b  ^ "⇔" ^ affiche c ^ ")"
+  | Equ(a, b) -> affiche a ^ "⇔" ^ affiche b 
+;;
+
+
 
 (* Q7 *)
 type valVerite = Zero | Un ;;
@@ -125,27 +168,27 @@ let intNeg = function
 ;;
 
 
-let intAnd s2 = function
-  | Un -> if (s2 == Un) then Un else Zero
+let intAnd v2 = function
+  | Un -> if (v2 == Un) then Un else Zero
   | _ -> Zero
 ;;
 
 
-let rec intOr s2 = function
-  | Zero -> if (s2 == Zero) then Zero else Un
+let rec intOr v2 = function
+  | Zero -> if (v2 == Zero) then Zero else Un
   | _ -> Un
 ;;
 
 
-let rec intImp s2 = function
-  | Un -> if (s2 == Zero) then Zero else Un
+let rec intImp v2 = function
+  | Un -> if (v2 == Zero) then Zero else Un
   | _ -> Un
 ;;
 
 
-let rec intEqu s2 = function
-  | Zero -> if (s2 == Zero) then Un else Zero
-  | Un -> if (s2 == Un) then Un else Zero
+let rec intEqu v2 = function
+  | Zero -> if (v2 == Zero) then Un else Zero
+  | Un -> if (v2 == Un) then Un else Zero
 ;;
 
 
@@ -171,21 +214,39 @@ let rec modele fbf i = if (valV fbf i == Un) then true else false
 
 
 (* Q12 *)
+(*  (string * valVerite) list list *)
+let ensI1 = [[("p",Zero);("q",Zero)];[("p",Zero);("q",Un)];[("p",Un);("q",Zero)];[("p",Un);("q",Un)]]
+;;
+
+
+
+(* Q13 *)
+
+let rec consTous v = function
+  | [] -> [[]]
+  | t::q -> if (q != []) then (v::t)::(consTous v q) else [v::t]
+;;
+
+
+let rec ensInt (* ["b" ; "c"] *) = function
+  | [] -> [[]]
+  | t::q -> let q1 = ensInt q in (consTous (t,Un) q1) @ (consTous (t,Zero) q1)
+;;
+    
+
+
+    
+
 
     
     
+    
+    
+    
+    
+    
+  
 
 
-    
 
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
