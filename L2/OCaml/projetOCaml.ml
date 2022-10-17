@@ -127,7 +127,7 @@ let rec affiche = function
   | Imp(Imp(a, b), c) -> "(" ^ affiche a  ^ "⇒" ^ affiche b ^ ")⇒" ^ affiche c
   | Imp(a, b) -> affiche a ^ "⇒" ^ affiche b 
   | Equ(a, Equ(b, c)) -> affiche a ^ "⇔(" ^ affiche b  ^ "⇔" ^ affiche c ^ ")"
-  | Equ(a, b) -> affiche a ^ "⇔" ^ affiche b 
+  | Equ(a, b) -> affiche a ^ "⇔" ^ affiche b
 ;;
 
 
