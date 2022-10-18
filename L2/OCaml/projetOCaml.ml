@@ -222,7 +222,7 @@ let ensI1 = [[("p",Zero);("q",Zero)];[("p",Zero);("q",Un)];[("p",Un);("q",Zero)]
 
 (* Q13 *)
 
-let rec consTous v = function
+let rec consTous v l = match l with
   | [] -> [[]]
   | t::q -> if (q != []) then (v::t)::(consTous v q) else [v::t]
 ;;
@@ -231,25 +231,44 @@ let rec consTous v = function
 let rec ensInt (* ["b" ; "c"] *) = function
   | [] -> [[]]
   | t::q -> let q1 = ensInt q in (consTous (t,Un) q1) @ (consTous (t,Zero) q1)
-;;
-    
+;; 
+
 
 
 (* Q14 *)
-let rec satisfiable fbf = function
-  let ensI = ensInt (sp fbf) in
-  |[] -> false
-  |t::q -> if (modele fbf t) raise 
+exception Modele of bool
+;;
 
 
-    
-    
-    
-    
-    
+let rec existeModele fbf i = match i with
+  |[] -> raise (Modele false)
+  |t::q -> if (modele fbf t) then raise (Modele true) else existeModele fbf q
+;;
+
+  
+
+let satisfiable fbf = try existeModele fbf (ensInt (sp fbf)) with
+  | Modele bool -> bool
+;;
+
+
+
+(* Q16 *)
+let rec tousModele fbf i = match i with
+  |[] -> raise (Modele true)
+  |t::q -> if (modele fbf t) then raise (Modele false) else existeModele fbf q
+;;
+
+
+let rec valide fbf = match tousModele fbf (ensInt (sp fbf)) with
+  | Modele bool -> bool
+;;
     
     
   
+
+
+
 
 
 
