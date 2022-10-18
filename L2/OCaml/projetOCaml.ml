@@ -146,7 +146,7 @@ let i3 = [("a",Un) ; ("b",Un) ; ("c",Un)];;
 
 
 (* Q8 *) 
-let rec intSymb s i = match i with
+let rec intSymb s = function
   |(symb,v)::q when symb = s -> v
   |_::q -> intSymb s q
 ;;
@@ -168,25 +168,25 @@ let intNeg = function
 ;;
 
 
-let intAnd v2 = function
+let intAnd v1 v2 = match v1 with
   | Un -> if (v2 == Un) then Un else Zero
   | _ -> Zero
 ;;
 
 
-let rec intOr v2 = function
+let intOr v1 v2 = match v1 with
   | Zero -> if (v2 == Zero) then Zero else Un
   | _ -> Un
 ;;
 
 
-let rec intImp v2 = function
+let intImp v1 v2 = match v1 with
   | Un -> if (v2 == Zero) then Zero else Un
   | _ -> Un
 ;;
 
 
-let rec intEqu v2 = function
+let intEqu v1 v2 = match v1 with
   | Zero -> if (v2 == Zero) then Un else Zero
   | Un -> if (v2 == Un) then Un else Zero
 ;;
@@ -195,9 +195,9 @@ let rec intEqu v2 = function
 
 (* Q10 *)
 let rec valV fbf i = match fbf with
-  | Top -> intTop
-  | Bot -> intBot
   | Symb s -> intSymb s i
+  | Top -> intTop
+  | Bot -> intBot 
   | Not s -> intNeg (valV s i)
   | And (s1,s2) -> intAnd (valV s1 i) (valV s2 i)
   | Or (s1,s2) -> intOr (valV s1 i) (valV s2 i)
@@ -208,7 +208,7 @@ let rec valV fbf i = match fbf with
 
 
 (* Q11 *)
-let rec modele fbf i = if (valV fbf i == Un) then true else false
+let modele fbf i = if (valV fbf i == Un) then true else false
 ;;
 
 
@@ -235,7 +235,11 @@ let rec ensInt (* ["b" ; "c"] *) = function
     
 
 
-    
+(* Q14 *)
+let rec satisfiable fbf = function
+  let ensI = ensInt (sp fbf) in
+  |[] -> false
+  |t::q -> if (modele fbf t) raise 
 
 
     
