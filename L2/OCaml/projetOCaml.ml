@@ -7,7 +7,7 @@ type prop =
   | Or of prop * prop
   | Imp of prop * prop
   | Equ of prop * prop
-;;
+;; 
 
 
 
@@ -103,33 +103,34 @@ let rec afficheP = function
   | Or(a, b) -> "(" ^ afficheP a ^ "∨" ^ afficheP b ^ ")"
   | Imp(a, b) -> "(" ^ afficheP a ^ "⇒" ^ afficheP b ^ ")"
   | Equ(a, b) -> "(" ^ afficheP a ^ "⇔" ^ afficheP b ^ ")"
-;;
+;; 
 
 
 
 (* Q6 *)
 (* Equ(And(Symb "a", Symb "b"), Or(Not(Symb "a"), Symb "b")) *)
 (* f1 = a∧b ⇔ ¬a∨b *) 
-let rec affiche = function
-  | Symb a -> a
-  | Top -> "⊤"
-  | Bot -> "⊥"
-  | Not (Symb a) -> "¬" ^ a
-  | Not a -> "¬" ^ "(" ^  affiche a ^ ")"
-  | And(And(a, b), c) -> affiche a ^ "∧" ^ affiche b  ^ "∧" ^ affiche c
-  | And(a, And(b, c)) -> affiche a ^ "∧" ^ affiche b  ^ "∧" ^ affiche c
-  | And(Symb a, Symb b) -> a ^ "∧" ^ b
-  | And(Symb a, b) -> a ^ "∧(" ^ affiche b ^ ")"
-  | And(a, Symb b) -> "(" ^ affiche a ^ ")∧" ^ b
-  | And(a, b) -> "(" ^ affiche a ^ ")∧(" ^ affiche b ^ ")"
-  | Or(a, Or(b, c)) -> affiche a ^ "∨(" ^ affiche b  ^ "∨" ^ affiche c ^ ")"
-  | Or(a, b) -> affiche a ^ "∨" ^ affiche b
-  | Imp(Imp(a, b), c) -> "(" ^ affiche a  ^ "⇒" ^ affiche b ^ ")⇒" ^ affiche c
-  | Imp(a, b) -> affiche a ^ "⇒" ^ affiche b 
-  | Equ(a, Equ(b, c)) -> affiche a ^ "⇔(" ^ affiche b  ^ "⇔" ^ affiche c ^ ")"
-  | Equ(a, b) -> affiche a ^ "⇔" ^ affiche b
-;;
-
+(*
+  let rec affiche = function
+    | Symb a -> a
+    | Top -> "⊤"
+    | Bot -> "⊥"
+    | Not (Symb a) -> "¬" ^ a
+    | Not a -> "¬" ^ "(" ^  affiche a ^ ")"
+    | And(And(a, b), c) -> affiche a ^ "∧" ^ affiche b  ^ "∧" ^ affiche c
+    | And(a, And(b, c)) -> affiche a ^ "∧" ^ affiche b  ^ "∧" ^ affiche c
+    | And(Symb a, Symb b) -> a ^ "∧" ^ b
+    | And(Symb a, b) -> a ^ "∧(" ^ affiche b ^ ")"
+    | And(a, Symb b) -> "(" ^ affiche a ^ ")∧" ^ b
+    | And(a, b) -> "(" ^ affiche a ^ ")∧(" ^ affiche b ^ ")"
+    | Or(a, Or(b, c)) -> affiche a ^ "∨(" ^ affiche b  ^ "∨" ^ affiche c ^ ")"
+    | Or(a, b) -> affiche a ^ "∨" ^ affiche b
+    | Imp(Imp(a, b), c) -> "(" ^ affiche a  ^ "⇒" ^ affiche b ^ ")⇒" ^ affiche c
+    | Imp(a, b) -> affiche a ^ "⇒" ^ affiche b 
+    | Equ(a, Equ(b, c)) -> affiche a ^ "⇔(" ^ affiche b  ^ "⇔" ^ affiche c ^ ")"
+    | Equ(a, b) -> affiche a ^ "⇔" ^ affiche b
+  ;;
+*)
 
 
 (* Q7 *)
@@ -253,19 +254,37 @@ let satisfiable fbf = try existeModele fbf (ensInt (sp fbf)) with
 
 
 
-(* Q16 *)
+(* Q15 *)
 let rec tousModele fbf i = match i with
   |[] -> raise (Modele true)
-  |t::q -> if (modele fbf t) then raise (Modele false) else existeModele fbf q
+  |t::q -> if (not(modele fbf t)) then raise (Modele false) else existeModele fbf q
 ;;
 
 
-let rec valide fbf = match tousModele fbf (ensInt (sp fbf)) with
+let valide fbf = try tousModele fbf (ensInt (sp fbf)) with
   | Modele bool -> bool
 ;;
-    
-    
+
+
+
+(* Q16 *)
+let insatisfiable fbf = not(satisfiable fbf)
+;;
+
+
+
+(* Q17 *)
+let equivalent1 fbf1 fbf2 = 
   
+
+
+
+
+
+
+
+
+
 
 
 
