@@ -9,6 +9,11 @@ type prop =
   | Equ of prop * prop
 ;; 
 
+(* fonctions utiles *)
+let rec egaliteListe l1 l2 = match l1 with
+  |[] -> true
+  |t::q -> (t == (List.hd l2)) && (egaliteListe q (List.tl l2))
+;;
 
 
 (* Q1 *)
@@ -238,6 +243,11 @@ let rec ensInt (* ["b" ; "c"] *) = function
 
 (* Q14 *)
 exception Modele of bool
+
+
+let rec listeModele fbf i = match i with
+  |[] -> []
+  |t::q -> (modele fbf t)::(listeModele fbf q)
 ;;
 
 
@@ -250,6 +260,10 @@ let rec existeModele fbf i = match i with
 
 let satisfiable fbf = try existeModele fbf (ensInt (sp fbf)) with
   | Modele bool -> bool
+;;
+
+    
+let satisfiable2 fbf = List.mem true (listeModele fbf (ensInt (sp fbf)))
 ;;
 
 
@@ -265,6 +279,10 @@ let valide fbf = try tousModele fbf (ensInt (sp fbf)) with
   | Modele bool -> bool
 ;;
 
+    
+let valide2 fbf = not(List.mem false (listeModele fbf (ensInt (sp fbf))))
+;;
+
 
 
 (* Q16 *)
@@ -272,9 +290,18 @@ let insatisfiable fbf = not(satisfiable fbf)
 ;;
 
 
+let insatisfiable2 fbf = not(satisfiable2 fbf)
+;;
+
+
 
 (* Q17 *)
-let equivalent1 fbf1 fbf2 = 
+let equivalent1 fbf1 fbf2 = egaliteListe (listeModele fbf1 (ensInt (sp fbf1))) (listeModele fbf2 (ensInt (sp fbf2)))
+;;
+
+
+
+(* Q18 *)
   
 
 
