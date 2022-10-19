@@ -300,12 +300,14 @@ let equivalent1 fbf1 fbf2 = egaliteListe (listeModele fbf1 (ensInt (sp fbf1))) (
 ;;
 
 
+let equivalent2 fbf1 fbf2 = valide (And(fbf1,fbf2))
+;;
+
+
 
 (* Q18 *)
-  
-
-
-
+let consequence2 fbf1 fbf2 = valide2 (* avec la 1 ne marche pas *) (Imp(fbf1,fbf2))
+;;
 
 
 
