@@ -306,15 +306,27 @@ let equivalent2 fbf1 fbf2 = valide (And(fbf1,fbf2))
 
 
 (* Q18 *)
-let consequence2 fbf1 fbf2 = valide2 (* avec la 1 ne marche pas *) (Imp(fbf1,fbf2))
+let consequence2 fbf1 fbf2 = valide2 (* avec la 1, ne marche pas *) (Imp(fbf1,fbf2))
 ;;
 
 
 
+(* Q19 *)
+let rec tousSp = function
+  | [] -> []
+  | t::q -> supr_doublons ((sp t)@(tousSp q))
+;;
 
 
 
+let rec modeleCommun ensFbf i = function
+  | [] ->
+  | t::q -> (modele t i) && (modeleCommun q i)
+;;
 
+
+
+let rec contradictoire 
 
 
 
