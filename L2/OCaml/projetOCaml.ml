@@ -326,6 +326,9 @@ let rec modeleCommun ensFbf i = function
 
 
 
+let rec contradiction ensFbf = (modeleCommun ensFbf (ensInt (tousSp fbf)))
+
+
 
 
 
