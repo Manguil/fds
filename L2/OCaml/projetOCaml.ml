@@ -214,7 +214,7 @@ let rec valV fbf i = match fbf with
 
 
 (* Q11 *)
-let modele fbf i = if (valV fbf i == Un) then true else false
+let modele fbf i = (valV fbf i == Un)
 ;;
 
 
@@ -306,7 +306,7 @@ let equivalent2 fbf1 fbf2 = valide (And(fbf1,fbf2))
 
 
 (* Q18 *)
-let consequence2 fbf1 fbf2 = valide2 (* avec la 1, ne marche pas *) (Imp(fbf1,fbf2))
+let consequence2 fbf1 fbf2 = valide (* avec la 1, ne marche pas *) (Imp(fbf1,fbf2))
 ;;
 
 
@@ -320,13 +320,13 @@ let rec tousSp = function
 
 
 let rec modeleCommun ensFbf i = function
-  | [] ->
+  | [] -> true
   | t::q -> (modele t i) && (modeleCommun q i)
 ;;
 
 
 
-let rec contradictoire 
+
 
 
 
