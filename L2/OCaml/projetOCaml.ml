@@ -51,15 +51,15 @@ let rec nbc = function
 
 
 (* Q3 *)
-let prof = function
+let rec prof = function
   | Top -> 0
   | Bot -> 0
   | Symb _ -> 0
-  | Not a -> 1 + (nbc a)
-  | And(a, b) -> 1 + max (nbc a) (nbc b)
-  | Or(a, b) -> 1 + max (nbc a) (nbc b)
-  | Imp(a, b) -> 1 + max (nbc a) (nbc b)
-  | Equ(a, b) -> 1 + max (nbc a) (nbc b)
+  | Not a -> 1 + (prof a)
+  | And(a, b) -> 1 + max (prof a) (prof b)
+  | Or(a, b) -> 1 + max (prof a) (prof b)
+  | Imp(a, b) -> 1 + max (prof a) (prof b)
+  | Equ(a, b) -> 1 + max (prof a) (prof b)
 ;;
 
 
@@ -153,10 +153,8 @@ let i3 = [("a",Un) ; ("b",Un) ; ("c",Un)];;
 
 (* Q8 *) 
 let rec intSymb s = function
-  |(symb,v)::q when symb = s -> v
-  |_::q -> intSymb s q
+  |(symb,v)::q -> if (symb == s) then v else intSymb s q
 ;;
-    
   
 
 (* Q9 *) 
@@ -203,7 +201,7 @@ let intEqu v1 v2 = match v1 with
 let rec valV fbf i = match fbf with
   | Symb s -> intSymb s i
   | Top -> intTop
-  | Bot -> intBot 
+  | Bot -> intBot
   | Not s -> intNeg (valV s i)
   | And (s1,s2) -> intAnd (valV s1 i) (valV s2 i)
   | Or (s1,s2) -> intOr (valV s1 i) (valV s2 i)
@@ -243,7 +241,6 @@ let rec ensInt (* ["b" ; "c"] *) = function
 
 (* Q14 *)
 exception Modele of bool
-
 
 let rec listeModele fbf i = match i with
   |[] -> []
@@ -306,8 +303,7 @@ let equivalent2 fbf1 fbf2 = valide (And(fbf1,fbf2))
 
 
 (* Q18 *)
-let consequence2 fbf1 fbf2 = valide (* avec la 1, ne marche pas *) (Imp(fbf1,fbf2))
-;;
+
 
 
 
@@ -327,6 +323,14 @@ let rec modeleCommun ensFbf i = function
 
 
 let rec contradiction ensFbf = (modeleCommun ensFbf (ensInt (tousSp fbf)))
+;;                             
+                               
+
+
+
+(* Q23 *)
+let consequence2 fbf1 fbf2 = valide (* avec la 1, ne marche pas *) (Imp(fbf1,fbf2))
+;;
 
 
 
