@@ -12,7 +12,7 @@ type prop =
 (* fonctions utiles *)
 let rec egaliteListe l1 l2 = match l1 with
   |[] -> true
-  |t::q -> (t == (List.hd l2)) && (egaliteListe q (List.tl l2))
+  |t::q -> (t = (List.hd l2)) && (egaliteListe q (List.tl l2))
 ;;
 
 
@@ -153,7 +153,7 @@ let i3 = [("a",Un) ; ("b",Un) ; ("c",Un)];;
 
 (* Q8 *) 
 let rec intSymb s = function
-  |(symb,v)::q -> if (symb == s) then v else intSymb s q
+  |(symb,v)::q -> if (symb = s) then v else intSymb s q
 ;;
   
 
@@ -173,26 +173,26 @@ let intNeg = function
 
 
 let intAnd v1 v2 = match v1 with
-  | Un -> if (v2 == Un) then Un else Zero
+  | Un -> if (v2 = Un) then Un else Zero
   | _ -> Zero
 ;;
 
 
 let intOr v1 v2 = match v1 with
-  | Zero -> if (v2 == Zero) then Zero else Un
+  | Zero -> if (v2 = Zero) then Zero else Un
   | _ -> Un
 ;;
 
 
 let intImp v1 v2 = match v1 with
-  | Un -> if (v2 == Zero) then Zero else Un
+  | Un -> if (v2 = Zero) then Zero else Un
   | _ -> Un
 ;;
 
 
 let intEqu v1 v2 = match v1 with
-  | Zero -> if (v2 == Zero) then Un else Zero
-  | Un -> if (v2 == Un) then Un else Zero
+  | Zero -> if (v2 = Zero) then Un else Zero
+  | Un -> if (v2 = Un) then Un else Zero
 ;;
 
 
@@ -212,7 +212,7 @@ let rec valV fbf i = match fbf with
 
 
 (* Q11 *)
-let modele fbf i = (valV fbf i == Un)
+let modele fbf i = (valV fbf i = Un)
 ;;
 
 
@@ -267,8 +267,8 @@ let satisfiable2 fbf = List.mem true (listeModele fbf (ensInt (sp fbf)))
 
 (* Q15 *)
 let rec tousModele fbf i = match i with
-  |[] -> raise (Modele true)
-  |t::q -> if (not(modele fbf t)) then raise (Modele false) else existeModele fbf q
+  | [] -> raise (Modele true)
+  | t::q -> if (not(modele fbf t)) then raise (Modele false) else tousModele fbf q
 ;;
 
 
@@ -303,7 +303,10 @@ let equivalent2 fbf1 fbf2 = valide (And(fbf1,fbf2))
 
 
 (* Q18 *)
-
+let consequence2 fbf1 fbf2 = function
+  let i = 
+    
+    (modele fbf1 ensInt (sp fbf1)) || (modele fbf2 (ensInt (sp fbf1)))
 
 
 
@@ -324,12 +327,12 @@ let rec modeleCommun ensFbf i = function
 
 let rec contradiction ensFbf = (modeleCommun ensFbf (ensInt (tousSp fbf)))
 ;;                             
-                               
+                              
 
 
 
 (* Q23 *)
-let consequence2 fbf1 fbf2 = valide (* avec la 1, ne marche pas *) (Imp(fbf1,fbf2))
+let consequenceV fbf1 fbf2 = valide (* avec la 1, ne marche pas *) (Imp(fbf1,fbf2))
 ;;
 
 
