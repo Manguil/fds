@@ -303,11 +303,13 @@ let equivalent2 fbf1 fbf2 = valide (And(fbf1,fbf2))
 
 
 (* Q18 *)
-let consequence2 fbf1 fbf2 = function
-  let i = 
-    
-    (modele fbf1 ensInt (sp fbf1)) || (modele fbf2 (ensInt (sp fbf1)))
+let rec consequenceInt fbf1 fbf2 = function
+  |[] -> true
+  |t::q -> (modele fbf1 t) && (modele fbf2 t) && (consequenceInt fbf1 fbf2 q)
 
+
+let consequence2 fbf1 fbf2 = consequenceInt fbf1 fbf2 (supr_doublons ((ensInt (sp fbf1))@(ensInt (sp fbf2))))
+  
 
 
 (* Q19 *)
