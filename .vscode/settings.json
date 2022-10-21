@@ -3,5 +3,5 @@
         "stdio.h": "c"
     },
     "java.dependency.syncWithFolderExplorer": true,
-    "java.dependency.packagePresentation": "flat"
+    "java.dependency.packagePresentation": "flat",
 }
