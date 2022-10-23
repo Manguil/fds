@@ -1,4 +1,3 @@
-
 public class Compteur {
 	private /*static (pour attribut de classe et pas d'instance)*/ int nbCompteurs;
 	private int valeur;
