@@ -13,7 +13,6 @@ Exercice 2:
 
 pas de constructeur pour les classes B et C
 pas de return à m0
-Il faut enlever le public (ou pas)
 
 Exercice 3:
 
