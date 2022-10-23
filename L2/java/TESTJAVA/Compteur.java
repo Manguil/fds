@@ -5,5 +5,5 @@ public class Compteur {
 }
 class CompteurDoubIeFonction extends Compteur {
 	public CompteurDoubIeFonction ( int val ) { this.val = val; }
-	public void dec( ) { this.val = val; }
+	public void dec( ) { this.val = val+1; }
 }
