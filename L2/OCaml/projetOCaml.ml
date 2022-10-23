@@ -334,7 +334,7 @@ let rec contradiction ensFbf = (modeleCommun ensFbf (ensInt (tousSp fbf)))
 
 
 (* Q23 *)
-let consequenceV fbf1 fbf2 = valide (* avec la 1, ne marche pas *) (Imp(fbf1,fbf2))
+let consequenceV fbf1 fbf2 = valide (Imp(fbf1,fbf2))
 ;;
 
 
