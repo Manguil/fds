@@ -53,13 +53,12 @@ public class PolynomeCreux {
 
     public void ajoutMonome(Monome x) {
         coeff.set(x.getDegre(), new Monome(x.getCoeff(),x.getDegre()));
-        if ()
     }
 
     public PolynomeCreux derivee() {
         PolynomeCreux pol = new PolynomeCreux();
         for (int i = 0; i < coeff.size(); i++) {
-            pol.coeff.set(i, coeff.get(i).getCoeff()*(i+1));
+            //pol.coeff.set(i, coeff.get(i).getCoeff()*(i+1));
         }
         return pol;
     }
