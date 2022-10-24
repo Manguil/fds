@@ -22,7 +22,7 @@ public class PolynomeCreux {
                 }
                 switch (i) {
                     case 0: res += " "; break;
-                    case 1: res+= "x "; break;
+                    case 1: res += "x "; break;
                     default: res += "x^"+i+" ";
                 }
             }
@@ -45,7 +45,7 @@ public class PolynomeCreux {
         int max = 0;
         for (int i = 0; i < coeff.size(); i++) {
             if (coeff.get(i).getCoeff() != 0) {
-                max = i;
+                max = coeff.get(i).getDegre();
             }
         }
         return max;
@@ -54,12 +54,33 @@ public class PolynomeCreux {
     public void ajoutMonome(Monome x) {
         coeff.set(x.getDegre(), new Monome(x.getCoeff(),x.getDegre()));
     }
-
-    public PolynomeCreux derivee() {
-        PolynomeCreux pol = new PolynomeCreux();
-        for (int i = 0; i < coeff.size(); i++) {
-            //pol.coeff.set(i, coeff.get(i).getCoeff()*(i+1));
+    /*
+    public PolynomeCreux derivee(){
+        PolynomeCreux res = new PolynomeCreux();
+        if (degreMax()==0){                         // Si c'est le polynome null alors renvoie 0
+            res.coeff.add(0);
         }
-        return pol;
+        else {
+            res.coeff.add(coeff.get(1));
+            for (int i = 1;i<degreMax();i++) {
+                res.coeff.add(coeff.get(i+1)*(i+1));  //Calcule la derivee de chaque monomes
+            }
+        }
     }
+    */
+
+    
+    public PolynomeDense polCreuxADense() {
+        PolynomeDense res = new PolynomeDense(0*degreMax());
+        for (int i = 0; i < degreMax(); i++) {
+            System.out.println("degreI "+coeff.get(i).getDegre());
+            if (coeff.get(i).getDegre() == i) {
+                res.ajoutMonome(coeff.get(i));
+            } else {
+                res.ajoutMonome(new Monome(0, i));
+            }
+        }
+        return res;
+    }
+    
 }

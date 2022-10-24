@@ -55,11 +55,22 @@ public class PolynomeDense {
         coeff.set(x.getDegre(), x.getCoeff());
     }
 
-    public PolynomeDense derivee() {
-        PolynomeDense pol = new PolynomeDense();
-        for (int i = 0; i < coeff.size(); i++) {
-            pol.coeff.set(i, coeff.get(i)*(i+1));
+    public PolynomeDense derivee(){
+        PolynomeDense res = new PolynomeDense();
+        if (degreMax()==0){                         // Si c'est le polynome null alors renvoie 0
+            res.coeff.add(0);
         }
-        return pol;
+        else {
+            res.coeff.add(coeff.get(1));
+            for (int i = 1;i<degreMax();i++){
+                res.coeff.add(coeff.get(i+1)*(i+1));  //Calcule la derivee de chaque monomes
+            }
+        }
+        return res;
+    }
+
+    public PolynomeCreux polDenseACreux() {
+        PolynomeCreux res = new PolynomeCreux();
+        return res;
     }
 }
