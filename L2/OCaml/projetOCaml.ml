@@ -320,16 +320,20 @@ let rec tousSp = function
 
 
 
-let rec modeleCommun ensFbf i = function
+let rec modeleCommun ensFbf i = match ensFbf with
   | [] -> true
   | t::q -> (modele t i) && (modeleCommun q i)
 ;;
 
 
 
-let rec contradiction ensFbf = (modeleCommun ensFbf (ensInt (tousSp fbf)))
+let rec contradictionInt ensFbf = function
+  |[] -> true
+  |t::q -> (not (modeleCommun ensFbf t)) && (contradictionInt ensFbf q) 
 ;;                             
-                              
+                          
+
+let contradiction ensFbf = contradictionInt ensFbf (ensInt (tousSp ensFbf))
 
 
 
