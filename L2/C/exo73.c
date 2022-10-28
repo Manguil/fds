@@ -12,5 +12,5 @@ int main() {
     event.sa_handler = hangleSigalarm;
     sigaction(SIGALRM, &event, NULL);
     alarm(2);
-    while(1)
+    while(1);
 }
