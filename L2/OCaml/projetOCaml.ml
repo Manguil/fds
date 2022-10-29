@@ -341,13 +341,19 @@ let contradiction ensFbf = contradictionInt ensFbf (ensInt (tousSp ensFbf))
 
 
 (* Q22 *) 
-let consequence ensFbf fbf = (modeleCommun ensFbf) && modele fbf
+let rec consequenceInt ensFbf fbf = function
+  |[] -> true
+  |t::q -> (not(modeleCommun ensFbf t) || (modele fbf t)) && (consequenceInt ensFbf fbf q)
+;;                             
+                          
+
+let consequence ensFbf fbf = consequenceInt ensFbf fbf (ensInt (tousSp ensFbf))
 ;;
 
 
 
 (* Q23 *)
-let consequenceV fbf1 fbf2 = valide (Imp(fbf1,fbf2))
+let consequenceV ensFbf fbf = valide (Imp(fbf1,fbf2))
 ;;
 
 
