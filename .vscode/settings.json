@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "stdio.h": "c"
-    },
-    "java.dependency.syncWithFolderExplorer": true,
-    "java.dependency.packagePresentation": "flat",
-}
