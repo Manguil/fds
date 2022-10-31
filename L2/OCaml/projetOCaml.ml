@@ -113,29 +113,29 @@ let rec afficheP = function
 
 
 (* Q6 *)
-(* Equ(And(Symb "a", Symb "b"), Or(Not(Symb "a"), Symb "b")) *)
-(* f1 = a∧b ⇔ ¬a∨b *) 
-(*
-  let rec affiche = function
-    | Symb a -> a
-    | Top -> "⊤"
-    | Bot -> "⊥"
-    | Not (Symb a) -> "¬" ^ a
-    | Not a -> "¬" ^ "(" ^  affiche a ^ ")"
-    | And(And(a, b), c) -> affiche a ^ "∧" ^ affiche b  ^ "∧" ^ affiche c
-    | And(a, And(b, c)) -> affiche a ^ "∧" ^ affiche b  ^ "∧" ^ affiche c
-    | And(Symb a, Symb b) -> a ^ "∧" ^ b
-    | And(Symb a, b) -> a ^ "∧(" ^ affiche b ^ ")"
-    | And(a, Symb b) -> "(" ^ affiche a ^ ")∧" ^ b
-    | And(a, b) -> "(" ^ affiche a ^ ")∧(" ^ affiche b ^ ")"
-    | Or(a, Or(b, c)) -> affiche a ^ "∨(" ^ affiche b  ^ "∨" ^ affiche c ^ ")"
-    | Or(a, b) -> affiche a ^ "∨" ^ affiche b
-    | Imp(Imp(a, b), c) -> "(" ^ affiche a  ^ "⇒" ^ affiche b ^ ")⇒" ^ affiche c
-    | Imp(a, b) -> affiche a ^ "⇒" ^ affiche b 
-    | Equ(a, Equ(b, c)) -> affiche a ^ "⇔(" ^ affiche b  ^ "⇔" ^ affiche c ^ ")"
-    | Equ(a, b) -> affiche a ^ "⇔" ^ affiche b
-  ;;
-*)
+(* Equ(And(Symb "a", And(Symb "b", Symb "c")), Or(Not(Symb "a"), Symb "b")) *)
+(* f1 = a∧(b∧c) ⇔ ¬a∨b *) 
+
+let rec affiche = function
+  | Symb a -> a
+  | Top -> "⊤"
+  | Bot -> "⊥"
+  | Not (Symb a) -> "¬" ^ a
+  | Not a -> "¬" ^ "(" ^  affiche a ^ ")"
+  | And(And(a, b), c) -> affiche a ^ "∧" ^ affiche b  ^ "∧" ^ affiche c
+  | And(a, And(b, c)) -> affiche a ^ "∧(" ^ affiche b  ^ ")∧" ^ affiche c
+  | And(Symb a, Symb b) -> a ^ "∧" ^ b
+  | And(Symb a, b) -> a ^ "∧(" ^ affiche b ^ ")"
+  | And(a, Symb b) -> "(" ^ affiche a ^ ")∧" ^ b
+  | And(a, b) -> "(" ^ affiche a ^ ")∧(" ^ affiche b ^ ")"
+  | Or(a, Or(b, c)) -> affiche a ^ "∨(" ^ affiche b  ^ "∨" ^ affiche c ^ ")"
+  | Or(a, b) -> affiche a ^ "∨" ^ affiche b
+  | Imp(Imp(a, b), c) -> "(" ^ affiche a  ^ "⇒" ^ affiche b ^ ")⇒" ^ affiche c
+  | Imp(a, b) -> affiche a ^ "⇒" ^ affiche b 
+  | Equ(a, Equ(b, c)) -> affiche a ^ "⇔(" ^ affiche b  ^ "⇔" ^ affiche c ^ ")"
+  | Equ(a, b) -> affiche a ^ "⇔" ^ affiche b
+;;
+
 
 
 (* Q7 *)
@@ -344,8 +344,8 @@ let contradiction ensFbf = contradictionInt ensFbf (ensInt (tousSp ensFbf))
 let rec consequenceInt ensFbf fbf = function
   |[] -> true
   |t::q -> (not(modeleCommun ensFbf t) || (modele fbf t)) && (consequenceInt ensFbf fbf q)
-;;                             
-                          
+;;
+
 
 let consequence ensFbf fbf = consequenceInt ensFbf fbf (ensInt (tousSp ensFbf))
 ;;
@@ -353,14 +353,18 @@ let consequence ensFbf fbf = consequenceInt ensFbf fbf (ensInt (tousSp ensFbf))
 
 
 (* Q23 *)
-let consequenceV ensFbf fbf = valide (Imp(fbf1,fbf2))
+let rec conjonction = function
+  | [] -> Top
+  | t::q -> And(t,conjonction q)
+;;
+
+
+let consequenceV ensFbf fbf = valide (Imp(conjonction ensFbf,fbf))
 ;;
 
 
 
-
-
-
-
-
+(* Q24 *)
+let consequenceI ensFbf fbf = insatisfiable (And(conjonction ensFbf, Not(fbf)))
+;;
 
