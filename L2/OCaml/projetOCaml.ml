@@ -367,4 +367,3 @@ let consequenceV ensFbf fbf = valide (Imp(conjonction ensFbf,fbf))
 (* Q24 *)
 let consequenceI ensFbf fbf = insatisfiable (And(conjonction ensFbf, Not(fbf)))
 ;;
-
