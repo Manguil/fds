@@ -16,6 +16,20 @@ let rec egaliteListe l1 l2 = match l1 with
 ;;
 
 
+let listePriorite = function
+  | Symb _ | Top | Bot -> 5,""
+  | Not _ -> 4,"¬"
+  | And _ -> 3,"∧"
+  | Or _ -> 2,"∨"
+  | Imp _ -> 1,"⇒"
+  | Equ _ -> 0,"⇔"
+
+
+let f = Equ(And(Symb "a", Symb "c"),Or(Not(Symb "b"),Imp(Symb "c",And(Bot,Top))))
+;;(* f =  a∧c⇔¬b∨(c⇒⊥∧⊤) ⇔ ((a∧c)⇔(¬(b)∨(c⇒(⊥∧⊤)))) *)
+(* a∧c⇔(¬b)∨(c⇒⊥∧⊤) *)
+
+
 (* Q1 *)
 let f1 = Equ(And(Symb "a", Symb "b"), Or(Not(Symb "a"), Symb "b"))
 ;; (* f1 = a∧b ⇔ ¬a∨b *) 
@@ -113,27 +127,18 @@ let rec afficheP = function
 
 
 (* Q6 *)
-(* Equ(And(Symb "a", And(Symb "b", Symb "c")), Or(Not(Symb "a"), Symb "b")) *)
-(* f1 = a∧(b∧c) ⇔ ¬a∨b *) 
-
 let rec affiche = function
   | Symb a -> a
   | Top -> "⊤"
   | Bot -> "⊥"
-  | Not (Symb a) -> "¬" ^ a
-  | Not a -> "¬" ^ "(" ^  affiche a ^ ")"
-  | And(And(a, b), c) -> affiche a ^ "∧" ^ affiche b  ^ "∧" ^ affiche c
-  | And(a, And(b, c)) -> affiche a ^ "∧(" ^ affiche b  ^ ")∧" ^ affiche c
-  | And(Symb a, Symb b) -> a ^ "∧" ^ b
-  | And(Symb a, b) -> a ^ "∧(" ^ affiche b ^ ")"
-  | And(a, Symb b) -> "(" ^ affiche a ^ ")∧" ^ b
-  | And(a, b) -> "(" ^ affiche a ^ ")∧(" ^ affiche b ^ ")"
-  | Or(a, Or(b, c)) -> affiche a ^ "∨(" ^ affiche b  ^ "∨" ^ affiche c ^ ")"
-  | Or(a, b) -> affiche a ^ "∨" ^ affiche b
-  | Imp(Imp(a, b), c) -> "(" ^ affiche a  ^ "⇒" ^ affiche b ^ ")⇒" ^ affiche c
-  | Imp(a, b) -> affiche a ^ "⇒" ^ affiche b 
-  | Equ(a, Equ(b, c)) -> affiche a ^ "⇔(" ^ affiche b  ^ "⇔" ^ affiche c ^ ")"
-  | Equ(a, b) -> affiche a ^ "⇔" ^ affiche b
+  | Not a as fbf -> let prioriteParent,operateur = listePriorite fbf and prioriteEnfant = fst (listePriorite a) in
+      operateur ^
+      (if (prioriteParent > prioriteEnfant) then "(" ^  affiche a ^ ")" else affiche a)
+  | And(a, b) | Or(a,b) | Imp(a,b) | Equ(a,b) as fbf -> 
+      let prioriteParent,operateur = listePriorite fbf and prioriteEnfantA = fst (listePriorite a) and prioriteEnfantB = fst (listePriorite b) in 
+      (if (prioriteParent > prioriteEnfantA) then "(" ^  affiche a ^ ")" else affiche a)
+      ^ operateur ^  
+      (if (prioriteParent > prioriteEnfantB) then "(" ^  affiche b ^ ")" else affiche b)
 ;;
 
 
@@ -367,3 +372,4 @@ let consequenceV ensFbf fbf = valide (Imp(conjonction ensFbf,fbf))
 (* Q24 *)
 let consequenceI ensFbf fbf = insatisfiable (And(conjonction ensFbf, Not(fbf)))
 ;;
+
