@@ -15,7 +15,7 @@ public class Etudiant{
     }
     
     public void setEmprunterOrd(Ordinateur o){
-        if (o)
+        if (o.getEmprunteur() == null && OrdiEmprunte == null)
         OrdiEmprunte = o;
     }
 }

@@ -21,7 +21,7 @@ public class Ordinateur{
     }
 
     public void setEmprunteur(Etudiant emprunteur) {
-        if (this.emprunteur == null) {
+        if (this.emprunteur.getOrdiEmprunte() == null && emprunteur == null) {
             this.emprunteur = emprunteur;
         }
     }
