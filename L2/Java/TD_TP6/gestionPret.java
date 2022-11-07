@@ -25,9 +25,16 @@ public class gestionPret {
                 listeOrdiParMarque = stockOrdi;
             }
             else {
-                if (o.getMarque().equals(m)){
-                    listeOrdiParMarque.add(o);
-               }
+                if (disponible){
+                    if (o.getMarque().equals(m) && o.getEmprunteur()==null){
+                        listeOrdiParMarque.add(o);
+                   }
+                }
+                else {
+                    if (o.getMarque().equals(m) && o.getEmprunteur()!=null){
+                        listeOrdiParMarque.add(o);
+                    }
+                }
             }
         }
         return listeOrdiParMarque;

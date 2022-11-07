@@ -1,6 +1,6 @@
 public class Etudiant{
     private String nom;
-    private Ordinateur OrdiEmprunte;
+    private Ordinateur OrdiEmprunte = null;
     
     public Etudiant(String nom){
         this.nom = nom;
@@ -14,7 +14,8 @@ public class Etudiant{
         return OrdiEmprunte;
     }
     
-    public void emprunterOrd(Ordinateur ordi){
-        OrdiEmprunte = ordi;
+    public void setEmprunterOrd(Ordinateur o){
+        if (o)
+        OrdiEmprunte = o;
     }
 }
