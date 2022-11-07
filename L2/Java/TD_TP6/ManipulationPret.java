@@ -18,6 +18,9 @@ public class ManipulationPret {
         g.ajoutOrdi(o4);
         g.suprOrdi(o4);
         System.out.println(g.recherche("all",true));
+        o1.setEmprunteur(e1);
+        o2.setEmprunteur(e2);
+        o3.setEmprunteur(e3);
         
     }
 }
