@@ -272,8 +272,14 @@ let satisfiable2 fbf = List.mem true (listeModele fbf (ensInt (sp fbf)))
 
 (* Q15 *)
 let rec tousModele fbf i = match i with
+  | [] -> true
+  | t::q -> if (not(modele fbf t)) then false else tousModele fbf q
+;;
+
+
+let rec tousModele2 fbf i = match i with
   | [] -> raise (Modele true)
-  | t::q -> if (not(modele fbf t)) then raise (Modele false) else tousModele fbf q
+  | t::q -> if (not(modele fbf t)) then raise (Modele false) else tousModele2 fbf q
 ;;
 
 
@@ -302,7 +308,7 @@ let equivalent1 fbf1 fbf2 = egaliteListe (listeModele fbf1 (ensInt (sp fbf1))) (
 ;;
 
 
-let equivalent2 fbf1 fbf2 = valide (Equ(fbf1,fbf2))
+let equivalent2 fbf1 fbf2 = valide (And(fbf1,fbf2))
 ;;
 
 
