@@ -308,7 +308,7 @@ let equivalent1 fbf1 fbf2 = egaliteListe (listeModele fbf1 (ensInt (sp fbf1))) (
 ;;
 
 
-let equivalent2 fbf1 fbf2 = valide (And(fbf1,fbf2))
+let equivalent2 fbf1 fbf2 = valide (Equ(fbf1,fbf2))
 ;;
 
 
