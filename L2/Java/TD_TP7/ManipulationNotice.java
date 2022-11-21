@@ -9,6 +9,5 @@ public class ManipulationNotice {
         Contributeur c5 = new Contributeur("Dupont", "Jacqueline");
         Contributeur c6 = new Contributeur("Dupont", "Marie");
         noticeBibliographique n1 = new noticeBibliographique("Blablabla", "111-111-111");
-        contributeurs.put(Redacteur,);
     }
 }
