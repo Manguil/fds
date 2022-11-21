@@ -1,8 +1,8 @@
-public class Personne {
+public class Personnes {
 	private String nom;
 	private String prenom;
 	
-	public Personne(String nom, String prenom) {
+	public Personnes(String nom, String prenom) {
 		this.nom = nom;
 		this.prenom = prenom;
 	}

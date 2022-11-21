@@ -1,6 +1,6 @@
 public interface IFileAttente {
-    void mettreEnFile(Personne p);
-    Personne defiler();
+    void mettreEnFile(Personnes p);
+    Personnes defiler();
     boolean estVide();
     int taille();
     public default void vider() {
