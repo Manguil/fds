@@ -21,7 +21,8 @@ def AfficheEmetteurs(Maison,Emetteur,rayon):
 
 
 def GenererMaisons(Maison,n):
-    Maison = [(randint(1,1001),randint(1,1001)) for i in range(n)]
+    return [(randint(1,1001),randint(1,1001)) for i in range(n)]
+    
 
 def Couvre(Maison,i,j):
     return (Maison[i][0]-Maison[j][0])**2+(Maison[i][1]-Maison[j][1])**2 <= rayon**2
@@ -31,6 +32,7 @@ def dansRayon(Maison, i):
     for j in range(len(Maison)):
         if Couvre(Maison, i, j):
             maxMaisonRayon += 1
+    return maxMaisonRayon
 
 def choixMaison(Maison,MaisonsRestantes):#MaisonsRestantes[i]=0 ssi i n'est pas couverte
     i0=-1
@@ -41,7 +43,6 @@ def choixMaison(Maison,MaisonsRestantes):#MaisonsRestantes[i]=0 ssi i n'est pas 
             maxMaisonRayon = dansRayon(Maison, i)
     return i0
 
-#Approx gloutonne
 def choixEmetteurGlouton(Maison):
     n=len(Maison)
     Emetteur=[0]*n
@@ -62,11 +63,12 @@ def longueur(Emetteur):
     return cpt
     
 rayon=120 # rayon de l'émetteur
-n=100 #nombre de maisons
+n=300000 #nombre de maisons
 Maison=[] #contient les coordonnees cartesiennes des maisons dans [1,1000]x[1,1000]
-GenererMaisons(Maison,n)
 
-AfficheMaisons(Maison)
+Maison = GenererMaisons(Maison,n)
+
+#AfficheMaisons(Maison)
 
 Emetteur=choixEmetteurGlouton(Maison)
 
