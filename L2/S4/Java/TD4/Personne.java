@@ -1,4 +1,5 @@
 @Refactoring(nomPersonne = "Mat", nomRefactoring = RefactoringName.rename, Commentaire = "mettre Majuscule aux attributs")
+@Refactoring(nomPersonne = "Mat", nomRefactoring = RefactoringName.encapsulatedField, Commentaire = "mettre en privee les   attributs")
 public class Personne {
     
     public Personne (String nom,int age,int numrue,String nomrue,
