@@ -62,8 +62,8 @@ def longueur(Emetteur):
             cpt+=1
     return cpt
     
-rayon=120 # rayon de l'émetteur
-n=300000 #nombre de maisons
+rayon=200 # rayon de l'émetteur
+n=50 #nombre de maisons
 Maison=[] #contient les coordonnees cartesiennes des maisons dans [1,1000]x[1,1000]
 
 Maison = GenererMaisons(Maison,n)
