@@ -37,18 +37,16 @@ def listesAdjacence(n, A):
     return listeAdjacence
 
 
-def arbreCouvrant(P):
-    aretes = Aretes(P)
+def arbreCouvrant(n, aretes):
     aretes.sort(key=lambda x: x[2])
     t = []
-    comp = {}
-    for i in range(len(P)):
-        comp[i] = i
+    comp = [i for i in range(n)]
     for i in range(len(aretes)):
         if comp[aretes[i][0]] != comp[aretes[i][1]]:
             t.append(aretes[i][0:2])
-            for j in range(len(P)):
-                if comp[j] == comp[aretes[i][0]]:
+            temp = comp[aretes[i][0]]
+            for j in range(n):
+                if comp[j] == temp:
                     comp[j] = comp[aretes[i][1]]
     return t
 
@@ -62,9 +60,9 @@ print( aretes ( P ))
 
 print ( pointsAleatoires (3 , 10 , 20))
 """
-A = [(1 ,5) ,(5 ,6) ,(4 ,4)]
-arbreA = arbreCouvrant(A)
+A =  pointsAleatoires(20, 100, 100)
+arbreA = arbreCouvrant(len(A), Aretes(A))
 
-dessinGraphe(A, listesAdjacence(len(A) , Aretes(A) ))
+dessinGraphe(A, listesAdjacence(len(A) , Aretes(A)))
 
 dessinArbre(A,listesAdjacence(len(A), arbreA),listesAdjacence(len(A), Aretes(A)))
