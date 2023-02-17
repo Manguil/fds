@@ -5,10 +5,7 @@ import time
 ###########################################
 
 def TableauAuHasard(n):
-    TabHasard=[]
-    #
-    # A COMPLETER
-    #
+    TabHasard=[random.randint(1,10001) for i in range(n)]
 
 def TriFusion(n,T):
     if n>1:
@@ -16,17 +13,32 @@ def TriFusion(n,T):
         n2=n-n1 
         T1=[]
         T2=[]
-    #
-    # A COMPLETER
-    #
+        
 
 def Fusion(n1, n2, T1, T2, T):
     i1 = 0
     i2 = 0
     i = 0
-    #
-    #A COMPLETER
-    #
+    while(i1 < n1 and i2 < n2):
+        if i1 <= i2:
+            T[i] = T1[i1]
+            i += 1
+            i1 += 1
+        else :
+            T[i] = T1[i2]
+            i += 1
+            i2 += 1
+    if i1 == n1:
+        while i2 < n2:
+            T[i] = T[i2]
+            i += 1
+            i2 += 1
+    else :
+        while i1 < n1:
+            T[i] = T[i1]
+            i += 1
+            i1 += 1
+
 
 def TriBulles(n,T):
     pass
@@ -40,7 +52,7 @@ choix=int(input("Taper 1 pour un test sur le TriFusion, 2 pour un comparatif Tri
 if choix==1:
     Tab=[0]
     n=int(input("Entrez la taille du tableau à trier: "))
-    #Tab=TableauAuHasard(n)
+    Tab=TableauAuHasard(n)
     print("Tableau à trier: ",Tab)
     TabFusion=list(Tab)
     TriFusion(n, TabFusion)

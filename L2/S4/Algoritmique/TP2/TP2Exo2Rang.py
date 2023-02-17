@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from random import *
 import time
+from math import ceil
 
 ###########################################
 
@@ -14,10 +15,24 @@ def ChoixPivot(n,T,typepivot):
     global nappelChoixPivot
     global npivot
     nappelChoixPivot+=1
-    #
-    # A COMPLETER
-    #
-    return 0 # A SUPPRIMER
+    pivot = 0
+    if typepivot == 1:
+        pivot = T[0]
+    elif typepivot:
+        for i in range(n):
+            Tinf = []
+            Tsup = []
+            pivot = T[i]
+            for j in range(n):
+                if T[j] < T[i]:
+                    Tinf.append(T[j])
+                else :
+                    Tsup.append(T[j])
+            if len(Tinf) <= ceil(3*n/4) and len(Tsup) <= ceil(3*n/4):
+                break
+    else :
+        pivot = T[randint.random(1,n)]
+    return pivot
 
 def Rang(n,k,T,typepivot):
     if n==1:
