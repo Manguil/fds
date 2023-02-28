@@ -1,4 +1,4 @@
-package genericiteSimple;
+package correction.genericiteSimple;
 
 public class BouteilleEtiquetee<TypeEtiquette> extends Bouteille {
 	private TypeEtiquette etiquette;

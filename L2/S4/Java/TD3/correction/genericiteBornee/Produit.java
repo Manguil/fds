@@ -1,4 +1,4 @@
-package genericiteBornee;
+package correction.genericiteBornee;
 
 public class Produit implements ObjetAvecEtiquette{
 	private String nomProduit;

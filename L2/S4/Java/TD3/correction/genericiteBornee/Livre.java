@@ -1,4 +1,4 @@
-package genericiteBornee;
+package correction.genericiteBornee;
 
 public class Livre implements ObjetAvecEtiquette{
 	private String titre;

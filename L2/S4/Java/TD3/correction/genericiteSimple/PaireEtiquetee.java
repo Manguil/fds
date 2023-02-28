@@ -1,4 +1,4 @@
-package genericiteSimple;
+package correction.genericiteSimple;
 
 public class PaireEtiquetee<A,B,TypeEtiquette> extends Paire<A,B> {
 	private TypeEtiquette etiquette;

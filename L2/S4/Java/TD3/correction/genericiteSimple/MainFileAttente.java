@@ -1,4 +1,4 @@
-package genericiteSimple;
+package correction.genericiteSimple;
 
 public class MainFileAttente {
 	public static void main(String[] args) {

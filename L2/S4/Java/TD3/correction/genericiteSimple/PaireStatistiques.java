@@ -1,4 +1,4 @@
-package genericiteSimple;
+package correction.genericiteSimple;
 
 public class PaireStatistiques<A,B> extends Paire<A,B> {
 	public static int nbPaires=0;

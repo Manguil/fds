@@ -1,4 +1,4 @@
-package genericiteBornee;
+package correction.genericiteBornee;
 
 import java.util.Comparator;
 
