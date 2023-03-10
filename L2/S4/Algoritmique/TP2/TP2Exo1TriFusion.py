@@ -1,18 +1,24 @@
 import matplotlib.pyplot as plt
-from random import *
+import random
 import time
 
 ###########################################
 
 def TableauAuHasard(n):
     TabHasard=[random.randint(1,10001) for i in range(n)]
+    return TabHasard
 
 def TriFusion(n,T):
     if n>1:
-        n1=n//2 
-        n2=n-n1 
-        T1=[]
-        T2=[]
+        n1=n//2
+        n2 = n - n1
+        T1=T[0:n1]
+        T2=T[n2:]
+        gauche = TriFusion(n1,T1)
+        droite = TriFusion(n2,T2)
+        fusionne = Fusion(n1,n2,gauche,droite,T)
+        return fusionne
+
         
 
 def Fusion(n1, n2, T1, T2, T):
