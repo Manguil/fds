@@ -12,31 +12,23 @@ def CoursAuHasard(n):
     return Cours
     
 def TriBullesCours(Cours):
-    n = len(Cours)
-    for i in range(n-1):
-        for j in range(0, n-i-1):
-            if Cours[j][1] > Cours[j+1][1] :
-                Cours[j][1], Cours[j+1][1] = Cours[j+1][1], Cours[j][1]
+    #
+    # A COMPLETER
+    # 
+    pass
 
 def CalculPred(n,Cours):
     Pred=n*[-1]
-    for i in range(1,n-1):
-        maxCoursFin = -1
-        for j in range(0,n-1):
-            if Cours[j][1] >= maxCoursFin and Cours[j][0] <= Cours[i][0]:
-                Pred[i] = Cours[i]
+    #
+    # A COMPLETER
+    #
     return Pred
 
 def ChoixMaxProgD(n,Cours,Pred):
     ValMax=n*[0]
-    Cours = TriBullesCours(Cours)
-    Pred = CalculPred(n, Cours)
-    ValMax[0] = Cours[0][2]
-    for i in range(n-1):
-        if Pred[i] != -1:
-            ValMax[i] = max(ValMax(i-1),Cours[i][2]+ValMax[Pred[i]])
-        else:
-            ValMax[i] = max(ValMax[i-1],Cours[i][2])
+    #
+    # A COMPLETER
+    #
     return ValMax[n-1]
 
 def ChoixMaxRec(Cours,Pred,k):
