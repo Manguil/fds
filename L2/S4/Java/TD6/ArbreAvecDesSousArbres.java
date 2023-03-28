@@ -1,5 +1,3 @@
-package org.example;
-
 public class ArbreAvecDesSousArbres<T> implements Arbre<T> {
     private T etiquette;
     private Arbre<T> vrai;
@@ -48,5 +46,9 @@ public class ArbreAvecDesSousArbres<T> implements Arbre<T> {
                 ", vrai=" + vrai +
                 ", faux=" + faux +
                 '}';
+    }
+
+    public String toStringIndente(){
+        return etiquette+"\n\t"+vrai.toStringIndente()+faux.toStringIndente();
     }
 }

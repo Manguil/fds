@@ -1,5 +1,3 @@
-package org.example;
-
 public class ArbreAvecUneEtiquette<T> implements Arbre<T>{
     private T etiquette;
     private Arbre<T> vrai;

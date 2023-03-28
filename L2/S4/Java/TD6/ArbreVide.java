@@ -1,5 +1,3 @@
-package org.example;
-
 public class ArbreVide<T> implements Arbre<T>{
     public ArbreVide() {
     }
@@ -38,4 +36,6 @@ public class ArbreVide<T> implements Arbre<T>{
     public String toString() {
         return "\nArbreVide{}";
     }
+
+    public int nbFeuille() {return 0;}
 }

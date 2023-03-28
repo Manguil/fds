@@ -1,5 +1,3 @@
-package org.example;
-
 public interface Arbre<T>{
     Arbre<T> composer(T etiquette, Arbre<T> vrai, Arbre<T> faux);
     Arbre<T> sousArbreVrai();
@@ -10,5 +8,13 @@ public interface Arbre<T>{
 
     @Override
     String toString();
+
+    String toStringIndente();
+
+    default int nbFeuille(){
+        if (estFeuille()) {return 1;}
+
+        else {return sousArbreVrai().nbFeuille() + sousArbreFaux().nbFeuille();}
+    }
 
 }

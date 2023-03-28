@@ -1,5 +1,3 @@
-package org.example;
-
 public class ArbreRéduitAUneFeuille<T> implements Arbre<T>{
     private T etiquette;
 
@@ -42,5 +40,9 @@ public class ArbreRéduitAUneFeuille<T> implements Arbre<T>{
         return "\nArbreRéduitAUneFeuille{" +
                 "etiquette=" + etiquette +
                 '}';
+    }
+
+    public String toStringIndente() {
+        return ""+etiquette;
     }
 }
