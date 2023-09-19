@@ -1,31 +1,70 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-char **strsplit(const char *s,const char sep)
+char **strsplit(const char *s, const char sep)
 {
-    int nbSep = 0;
-    int compteNbCararc = 0;
-    for (int i = 0; s[i]; i++)
+    int nbChamps = 0;
+    int nbCaracteres = 0;
+    int longueur = strlen(s);
+    char **tab = NULL;
+
+    for (int i = 0; i <= longueur; i++)
     {
-        if (s[i] == ':') nbSep ++;
-        
+        if (s[i] == sep || s[i] == '\0')
+        {
+            // Allouer de la mémoire pour le champ
+            tab = (char **)realloc(tab, (nbChamps + 1) * sizeof(char *));
+            if (tab == NULL)
+            {
+                perror("Erreur d'allocation de mémoire");
+                exit(1);
+            }
+
+            // Allouer de la mémoire pour le champ et le copier
+            tab[nbChamps] = (char *)malloc((nbCaracteres + 1) * sizeof(char));
+            if (tab[nbChamps] == NULL)
+            {
+                perror("Erreur d'allocation de mémoire");
+                exit(1);
+            }
+
+            strncpy(tab[nbChamps], s + i - nbCaracteres, nbCaracteres);
+            tab[nbChamps][nbCaracteres] = '\0';
+
+            nbChamps++;
+            nbCaracteres = 0;
+        }
+        else
+        {
+            nbCaracteres++;
+        }
     }
-    char* tab[nbSep+2];
-    for (int i = 0; s[i]; i++)
+
+    // Ajouter un pointeur NULL à la fin du tableau
+    tab = (char **)realloc(tab, (nbChamps + 1) * sizeof(char *));
+    if (tab == NULL)
     {
-        int posTab = 0;
-        if (s[i]==sep) posTab++;
-        else strncat(tab[posTab],s,1);
+        perror("Erreur d'allocation de mémoire");
+        exit(1);
     }
+    tab[nbChamps] = NULL;
 
     return tab;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
-    char** tab = strsplit("/bin:/usr/bin:/usr/local/bin",':');
-    for(int i = 0;tab[i];i++)
+    const char *entree = argv[1];
+    const char separateur = argv[2][0];
+
+    char **tab = strsplit(entree, separateur);
+    for (int i = 0; tab[i] != NULL; i++)
     {
-        printf("%i --> %s",i,tab[i]);
+        printf("%d --> %s\n", i, tab[i]);
+        free(tab[i]);
     }
+
+    free(tab);
+    return 0;
 }
