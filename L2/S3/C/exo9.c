@@ -13,21 +13,9 @@ char **strsplit(const char *s, const char sep)
     {
         if (s[i] == sep || s[i] == '\0')
         {
-            // Allouer de la mémoire pour le champ
-            tab = (char **)realloc(tab, (nbChamps + 1) * sizeof(char *));
-            if (tab == NULL)
-            {
-                perror("Erreur d'allocation de mémoire");
-                exit(1);
-            }
+            tab = realloc(tab, (nbChamps + 1) * sizeof(char *));
 
-            // Allouer de la mémoire pour le champ et le copier
-            tab[nbChamps] = (char *)malloc((nbCaracteres + 1) * sizeof(char));
-            if (tab[nbChamps] == NULL)
-            {
-                perror("Erreur d'allocation de mémoire");
-                exit(1);
-            }
+            tab[nbChamps] = malloc((nbCaracteres + 1) * sizeof(char));
 
             strncpy(tab[nbChamps], s + i - nbCaracteres, nbCaracteres);
             tab[nbChamps][nbCaracteres] = '\0';
@@ -41,13 +29,7 @@ char **strsplit(const char *s, const char sep)
         }
     }
 
-    // Ajouter un pointeur NULL à la fin du tableau
-    tab = (char **)realloc(tab, (nbChamps + 1) * sizeof(char *));
-    if (tab == NULL)
-    {
-        perror("Erreur d'allocation de mémoire");
-        exit(1);
-    }
+    tab = realloc(tab, (nbChamps + 1) * sizeof(char *));
     tab[nbChamps] = NULL;
 
     return tab;
@@ -59,11 +41,15 @@ int main(int argc, char *argv[])
     const char separateur = argv[2][0];
 
     char **tab = strsplit(entree, separateur);
+
+    int nbChamps = 0;
     for (int i = 0; tab[i] != NULL; i++)
     {
         printf("%d --> %s\n", i, tab[i]);
+        nbChamps++;
         free(tab[i]);
     }
+    printf("%d --> %s\n", nbChamps, "NULL");
 
     free(tab);
     return 0;
