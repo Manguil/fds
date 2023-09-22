@@ -2,25 +2,29 @@
 #include <string.h>
 #include <math.h>
 
-
-int stringIntToInt(char* s){
-    char tabInt[10] = {'0','1','2','3','4','5','6','7','8','9'};
+int stringIntToInt(char *s)
+{
+    char *tableauInt = "0123456789";
+    int longueur = strlen(s);
     int nb = 0;
-    printf("%i\n",strlen(s));
-    for(int i = strlen(s); i > 0 ; i--){
-        for (int k = 0; k < 11; k++){
-            if (s[strlen(s)-i] == tabInt[k]){
-                nb += k*pow(10,i-1);
+    for (int i = 0; s[i]; i++)
+    {
+        for (int k = 0; k <= 9; k++)
+        {
+            printf("%c, %c\n", s[i], tableauInt[k]);
+            if (s[i] == tableauInt[k])
+            {
+                nb += k * pow(10, longueur - (i + 1));
+                break;
             }
         }
     }
+
     return nb;
 }
 
-int main(){
-    char* s = "2136";
-    int i = 0;
-    i = stringIntToInt(s);
-    printf("%i\n",i);
-    return 0;
+int main(int argc, char **argv)
+{
+    int nb = stringIntToInt(argv[1]);
+    printf("l'entier correspondant à %s est %i\n", argv[1], nb);
 }
