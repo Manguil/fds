@@ -1,28 +1,31 @@
-/** converts an integer to a char string representing it in base 10
-*@param i a positive integer
-*@param s a ptr on a sufficiently large char array
-*@return NULL if i is negative, s otherwise
-*/
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
+#include <stdlib.h>
 
+char *intToStringInt(int nb)
+{
+    char *stringNb = "0";
 
+    int i = 0;
+    while (nb > 0)
+    {
+        stringNb = realloc(stringNb, (i+1) * sizeof(char));
+        int unite = nb % 10;
+        stringNb[i] = (char)unite + 48;
+        nb -= unite;
+        nb /= 10;
+        i++;
+    }
 
-char *itoa(int i, char *s) {
-    if (i < 0) return NULL;
-    int j = 0;
-    do {
-        s[j++] = i % 10 + '0';
-    } while ((i /= 10) > 0);
-    s[j] = '\0';
-    return s;
+    stringNb = realloc(stringNb, (i+1) * sizeof(char));
+    
+    return stringNb;
 }
 
-
-int main(){
-    int i = 2136;
-    char* s = intToStringInt(i);
-    printf("%i\n",i);
-    return 0;
+int main()
+{
+    int nb = 0;
+    scanf("%i", &nb);
+    char *stringNb = intToStringInt(nb);
+    printf("la chaine correspondant à %i est %s\n", nb, stringNb);
 }

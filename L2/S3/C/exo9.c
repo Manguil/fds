@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-char **strsplit(const char *s, const char sep)
+char** strsplit(char *s, char sep)
 {
     int nbChamps = 0;
     int nbCaracteres = 0;

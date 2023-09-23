@@ -26,5 +26,5 @@ int stringIntToInt(char *s)
 int main(int argc, char **argv)
 {
     int nb = stringIntToInt(argv[1]);
-    printf("l'entier correspondant à %s est %i\n", argv[1], nb);
+    printf("l'entier correspondant à la chaine de caractère %s est %i\n", argv[1], nb);
 }
