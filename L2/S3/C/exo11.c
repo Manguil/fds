@@ -4,12 +4,12 @@
 
 char *intToStringInt(int nb)
 {
-    char *stringNb = "0";
+    char *stringNb = malloc(sizeof(char));
 
     int i = 0;
     while (nb > 0)
     {
-        stringNb = realloc(stringNb, (i+1) * sizeof(char));
+        stringNb = realloc(stringNb, (i + 2) * sizeof(char));
         int unite = nb % 10;
         stringNb[i] = (char)unite + 48;
         nb -= unite;
@@ -17,8 +17,15 @@ char *intToStringInt(int nb)
         i++;
     }
 
-    stringNb = realloc(stringNb, (i+1) * sizeof(char));
-    
+    stringNb[i] = '\0';
+    i--;
+    for (int j = 0; j < (i / 2) + 1; j++)
+    {
+        char temp = stringNb[j];
+        stringNb[j] = stringNb[i];
+        stringNb[i] = temp;
+        i--;
+    }
     return stringNb;
 }
 
@@ -28,4 +35,5 @@ int main()
     scanf("%i", &nb);
     char *stringNb = intToStringInt(nb);
     printf("la chaine correspondant à %i est %s\n", nb, stringNb);
+    free(stringNb);
 }
