@@ -16,15 +16,10 @@ int main(int argc, char **argv)
         return 2;
     }
 
-    int charactere = 0;
-    if (argv[1][1] == 'c') 
-    {
-        charactere = 1;
-    }
-
     int nb = 0;
     int nbALire = 0;
-    if (charactere)
+    
+    if (argv[1][1] == 'c') 
     {
         nbALire = atoi(argv[1]+2); //pour sauter -c
         char *tampon = malloc(sizeof(char)*nbALire);
@@ -37,13 +32,13 @@ int main(int argc, char **argv)
         nb++;
     }
 
-    /*
     else 
     {
         nbALire = atoi(argv[1]+1); // pour sauter -
+        char *tampon = malloc(sizeof(char)*100);
         while (nb < nbALire)
         {
-            if (fread(&c, sizeof(char), 1, f) != 1) 
+            if (char *temp = fgets(, 1, f)) 
             {
                 printf("erreur de lecture (surement fin de fichier)\n");
                 return 3;
@@ -52,7 +47,6 @@ int main(int argc, char **argv)
             nb++;
         }
     }
-    */
 
     fclose(f);
 }
