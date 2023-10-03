@@ -50,7 +50,6 @@ int main(int argc, char **argv)
 		while (nb < nbALire)
 		{
 			ligne = fgets(tableauLignes[nb] + (i * (tailleTampon - 1)), sizeof(char) * (tailleTampon), f);
-			printf("tableauLignes[%i]: %s\n",nb + (i * (tailleTampon - 1)), tableauLignes[nb] + (i * (tailleTampon - 1)));
 
 			if (ligne[strlen(ligne) - 1] != '\n')
 			{
@@ -64,20 +63,23 @@ int main(int argc, char **argv)
 			{
 				printf("ligne else: %s\n", ligne);
 				printf("ligne suivante\n");
-				tableauLignes[nb][i * (tailleTampon - 1)] = '\0';
+				tableauLignes[nb][strlen(ligne) -2 + (tailleTampon-1)*i] = '\0';
 				nb++;
 				i = 0;
 			}
 		}
 
-		for (int j = 0; j <= nb; j++)
+		for (int j = 0; j < nb; j++)
 		{
 			printf("T[%i] = %s\n", j, tableauLignes[j]);
 			for (int a = 0; tableauLignes[j][a] != '\0'; a++)
 			{
 				printf("T[%i][%i] = %c\n", j, a, tableauLignes[j][a]);
 			}
+            free(tableauLignes[j]);
 		}
+
+        free(tableauLignes);
 	}
 
 	fclose(f);
