@@ -139,7 +139,7 @@ let rec affiche = function
       (if (prioriteParent > prioriteEnfantA) then "(" ^  affiche a ^ ")" else affiche a)
       ^ operateur ^  
       (if (prioriteParent > prioriteEnfantB) then "(" ^  affiche b ^ ")" else affiche b)
-;;
+;;  
 
 
 

@@ -55,7 +55,7 @@ int main(int argc, char **argv)
 			{
 				printf("La taille ligne n'est pas assez grande\n");
 				printf("ligne if: %s\n", ligne);
-				tableauLignes[nb] = realloc(tableauLignes[nb], sizeof(char) * tailleTampon * (i + 1));
+				tableauLignes[nb] = realloc(tableauLignes[nb], sizeof(char) * tailleTampon * (i + 1) +1);
 				i++;
 			}
 
@@ -63,7 +63,7 @@ int main(int argc, char **argv)
 			{
 				printf("ligne else: %s\n", ligne);
 				printf("ligne suivante\n");
-				tableauLignes[nb][strlen(ligne) -2 + (tailleTampon-1)*i] = '\0';
+				tableauLignes[nb][strlen(ligne) - 2 + (tailleTampon - 1) * i] = '\0';
 				nb++;
 				i = 0;
 			}
@@ -76,10 +76,10 @@ int main(int argc, char **argv)
 			{
 				printf("T[%i][%i] = %c\n", j, a, tableauLignes[j][a]);
 			}
-            free(tableauLignes[j]);
+			free(tableauLignes[j]);
 		}
 
-        free(tableauLignes);
+		free(tableauLignes);
 	}
 
 	fclose(f);
