@@ -28,3 +28,11 @@ while not(f(x(k) - epsilon) <= 0 & f(x(k) + epsilon) >= 0)
     k = k + 1;
 end
 x
+
+
+x = linspace(0, 1, 100); % Generating 100 points between 0 and 1
+f = exp(x) + 3*sqrt(x) - 2; % Evaluating f(x) for each point
+plot(x, f);
+xlabel('x');
+ylabel('f(x)');
+title('Plot of f(x) = exp(x) + 3*sqrt(x) - 2');
